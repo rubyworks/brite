@@ -1,0 +1,19 @@
+--- 
+title    : Brite
+subtitle : Light Up Your Site
+summary  : Super Simple Static Site Generation
+copyright: Copyright (c) 2006,2009 Thomas Sawyer
+license  : GPL
+suite    : proutils
+contact  : http://googlegroups.com/group/proutils
+authors  : Thomas Sawyer
+
+description:
+  Brite is a remarkably easy to use, light-weight website
+  generator. It supports a variety of backend rendering engines
+  including rhtml via eruby, textile via redcloth, markdown
+  via rdiscount, with others on the way.
+
+resources:
+  homepage: http://proutils.github.com/brite
+  repository: git://github.com/proutils/brite.git
