@@ -10,8 +10,10 @@ module Brite
   # Site class
   class Site
 
-    # Location of site.
+    # Location of site in local file system.
     attr :location
+
+    # Location of output directory.
     attr :output
 
     attr :layouts
@@ -96,7 +98,7 @@ module Brite
     end
 
     def render
-      render_posts  # renger posts first, so pages can use them
+      render_posts  # render posts first, so pages can use them
       render_pages
     end
 
@@ -116,6 +118,10 @@ module Brite
       @config ||= Config.new
     end
 
+    def url
+      config.url
+    end
+
     def defaults
       config.defaults
     end
@@ -128,7 +134,8 @@ module Brite
       {
         'posts' => posts.map{ |p| p.to_h },
         'posts_by_tag' => pbt, #posts_by_tag, #.map{ |t, ps| [t, ps.map{|p|p.to_h}] }
-        'tags' => tags
+        'tags' => tags,
+        'url' => url
       }
     end
 

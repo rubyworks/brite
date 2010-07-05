@@ -38,6 +38,10 @@ module Brite
       case format
       when /^coderay/
         coderay(text, format)
+      when /^syntax/
+        syntax(text, format)
+      when /^pygments/
+        pygments(text, format)
       when 'rdoc'  # TODO: Remove when next version of tilt is released.
         rdoc(text)
       else
@@ -76,6 +80,26 @@ module Brite
       format = format.split('.')[1] || :ruby #:plaintext
       tokens = CodeRay.scan(input, format.to_sym) #:ruby
       tokens.div()
+    end
+
+    #
+    def syntax(input, format)
+      require 'syntax/convertors/html'
+      format = format.split('.')[1] || 'ruby' #:plaintext
+      lines  = true
+      conv   = Syntax::Convertors::HTML.for_syntax(format)
+      %q{<div class="Syntax">} + conv.convert(input,lines) + %q{</div>}
+    end
+
+    #
+    def pygments(input, format)
+      require 'tmpdir'
+      format = format.split('.')[1] || 'ruby' #:plaintext
+      lines  = true
+      #%q{<div class="Syntax">} + conv.convert(input,lines) + %q{</div>}
+      file = File.join(Dir.tmpdir, 'brite-pygments.txt')
+      File.open(file, 'w+'){ |f| f << input }
+      `pygmentize -f html -l #{format} #{file}`
     end
 
     # Stencil Rendering

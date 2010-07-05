@@ -1,3 +1,4 @@
+require 'chocolates'
 require 'brite/part'
 
 module Brite
@@ -52,7 +53,12 @@ module Brite
 
     #
     def url
-      @url ||= name + extension
+      @url ||= File.join(site.url, name + extension)
+    end
+
+    #
+    def path
+      @path ||= '/' + name + extension
     end
 
     #
@@ -60,9 +66,14 @@ module Brite
       @extension ||= '.html'
     end
 
-    #
+    # DEPRECATE: Get rid of this and use rack to test page instead of files.
     def root
       '../' * file.count('/')
+    end
+
+    #
+    def work
+      '/' + File.dirname(file)
     end
 
     # TODO
@@ -79,13 +90,14 @@ module Brite
     def to_h
       {
         'url'      => url,
+        'path'     => path,
         'author'   => author,
         'title'    => title,
         'date'     => date,
         'tags'     => tags,
         'category' => category,
-        'summary'  => summary,
-        'content'  => content
+        'summary'  => summary
+        #'yield'    => content
       }
     end
 
@@ -103,7 +115,7 @@ module Brite
     end
 
     def to_contextual_attributes
-      { 'site'=>site.to_h, 'page'=>to_h, 'root'=>root }
+      { 'site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work }
     end
 
     #
@@ -113,7 +125,7 @@ module Brite
 
     # Summary is the rendering of the first part.
     def summary
-      @summary ||= @renders.first
+      @summary #||= @renders.first
     end
 
   protected
@@ -125,16 +137,17 @@ module Brite
     #++
     def render(inherit={})
       attributes = to_contextual_attributes
-
       attributes = attributes.merge(inherit)
 
+      render = @document.render(attributes)
+      output = render.to_s
+
+      @summary = render.summary
+
       #attributes['content'] = content if content
-
-      @renders = parts.map{ |part| part.render(stencil, attributes) }
-
-      output = @renders.join("\n")
-
-      @content = output
+      #@renders = parts.map{ |part| part.render(stencil, attributes) }
+      #output = @renders.join("\n")
+      #@content = output
 
       #attributes = attributes.merge('content'=>output)
 
@@ -144,7 +157,7 @@ module Brite
         output = renout.render(attributes){ output }
       end
 
-      output
+      output.strip
     end
 
   private
@@ -164,6 +177,27 @@ module Brite
       site.dryrun
     end
 
+    #
+    def parse
+      @document = Chocolates::Document.new(file)
+      @template = @document.template
+
+      header = @template.header
+
+      @stencil    = header['stencil'] || site.defaults.stencil
+
+      @author     = header['author']  || 'Anonymous'
+      @title      = header['title']
+      @date       = header['date']
+      @category   = header['category']
+      @extension  = header['extension']
+      @summary    = header['summary']
+
+      self.tags   = header['tags']
+      self.layout = header['layout']
+    end
+
+=begin
     #
     def parse
       hold = []
@@ -190,6 +224,7 @@ module Brite
       end
 
     end
+=end
 
     #
     def parse_header(head)
