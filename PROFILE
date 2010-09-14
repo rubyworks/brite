@@ -3,7 +3,7 @@ title    : Brite
 subtitle : Light Up Your Site
 summary  : Super Simple Static Site Generation
 copyright: Copyright (c) 2006,2009 Thomas Sawyer
-license  : GPL
+license  : Apache v2.0
 suite    : proutils
 contact  : http://googlegroups.com/group/proutils
 authors  : Thomas Sawyer
