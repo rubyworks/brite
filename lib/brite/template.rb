@@ -1,4 +1,5 @@
-require 'tilt'
+#require 'tilt'
+require 'malt'
 
 module Brite
 
@@ -42,16 +43,28 @@ module Brite
         syntax(text, format)
       when /^pygments/
         pygments(text, format)
-      when 'rdoc'  # TODO: Remove when next version of tilt is released.
-        rdoc(text)
+      #when 'rdoc'  # TODO: Remove when next version of tilt is released.
+      #  rdoc(text)
       else
-        if engine = Tilt[format]
-          engine.new{text}.render #(context)
-        else
-          text
-        end
+        doc = Malt.text(text, :format=>format)
+        doc.render
+        #if engine = Tilt[format]
+        #  engine.new{text}.render #(context)
+        #else
+        #  text
+        #end
       end
     end
+
+    #
+    def render_via_tilt(format, text)
+      if engine = Tilt[format]
+        engine.new{text}.render #(context)
+      else
+        text
+      end
+    end
+
 
     #
     #def redcloth(input)

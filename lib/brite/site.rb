@@ -34,10 +34,12 @@ module Brite
       @posts   = []
     end
 
+    #
     def tags
       @tags ||= posts.map{ |p| p.tags }.flatten.uniq.sort
     end
 
+    #
     def posts_by_tag
       @posts_by_tag ||= (
         chart ||= Hash.new{|h,k|h[k]=[]}
@@ -75,10 +77,12 @@ module Brite
       end
     end
 
+    #
     def lookup_layout(name)
       layouts.find{ |l| name == l.name }
     end
 
+    #
     def sort_files
       files = Dir['**/*']
       files.each do |file|
@@ -97,35 +101,42 @@ module Brite
       posts.sort!{ |a,b| b.date <=> a.date }
     end
 
+    #
     def render
       render_posts  # render posts first, so pages can use them
       render_pages
     end
 
-    def render_pages
-      pages.each do |page|
-        page.save(output)
-      end
-    end
-
+    #
     def render_posts
       posts.each do |post|
         post.save(output)
       end
     end
 
+    #
+    def render_pages
+      pages.each do |page|
+        page.save(output)
+      end
+    end
+
+    #
     def config
       @config ||= Config.new
     end
 
+    #
     def url
       config.url
     end
 
+    #
     def defaults
       config.defaults
     end
 
+    #
     def to_h
       pbt = {}
       posts_by_tag.each do |tag, posts|
@@ -139,6 +150,7 @@ module Brite
       }
     end
 
+    #
     def to_liquid
       to_h
     end

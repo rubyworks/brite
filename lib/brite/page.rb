@@ -1,4 +1,4 @@
-require 'chocolates'
+require 'neapolitan'
 require 'brite/part'
 
 module Brite
@@ -7,6 +7,9 @@ module Brite
   class Page
 
     attr :file
+
+    #
+    attr :header
 
     # Template type (rhtml or liquid)
     attr :stencil
@@ -44,9 +47,13 @@ module Brite
       @file    = file
       @parts   = []
       @renders = []
+
+      @layout  = default_layout
+
       parse
     end
 
+    #
     def name
       @name ||= file.chomp(File.extname(file))
     end
@@ -76,6 +83,11 @@ module Brite
       '/' + File.dirname(file)
     end
 
+    # Summary is the rendering of the first part.
+    def summary
+      @summary #||= @renders.first
+    end
+
     # TODO
     #def next
     #  self
@@ -96,7 +108,8 @@ module Brite
         'date'     => date,
         'tags'     => tags,
         'category' => category,
-        'summary'  => summary
+        'summary'  => summary,
+        'header'   => header
         #'yield'    => content
       }
     end
@@ -114,18 +127,14 @@ module Brite
       end
     end
 
+    #
     def to_contextual_attributes
-      { 'site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work }
+      to_h.merge('site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work)
     end
 
     #
     def to_liquid
       to_contextual_attributes
-    end
-
-    # Summary is the rendering of the first part.
-    def summary
-      @summary #||= @renders.first
     end
 
   protected
@@ -179,22 +188,29 @@ module Brite
 
     #
     def parse
-      @document = Chocolates::Document.new(file)
+      @document = Neapolitan::Document.new(file)
       @template = @document.template
 
-      header = @template.header
+      @header     = @template.header
 
-      @stencil    = header['stencil'] || site.defaults.stencil
+      @stencil    = @header['stencil'] || site.defaults.stencil
 
-      @author     = header['author']  || 'Anonymous'
-      @title      = header['title']
-      @date       = header['date']
-      @category   = header['category']
-      @extension  = header['extension']
-      @summary    = header['summary']
+      @author     = @header['author']  || 'Anonymous'
+      @title      = @header['title']
+      @date       = @header['date'] || date_from_filename(file) || Time.now
+      @category   = @header['category']
+      @extension  = @header['extension']
+      @summary    = @header['summary']
 
-      self.tags   = header['tags']
-      self.layout = header['layout']
+      self.tags   = @header['tags']
+      self.layout = @header['layout']
+    end
+
+    #
+    def date_from_filename(file)
+      if md = (/^\d\d\d\d-\d\d-\d\d/.match(file))
+        md[1]
+      end
     end
 
 =begin
@@ -226,6 +242,7 @@ module Brite
     end
 =end
 
+=begin
     #
     def parse_header(head)
       @stencil    = head['stencil'] || site.defaults.stencil
@@ -239,18 +256,20 @@ module Brite
       self.tags   = head['tags']
       self.layout = head['layout']
     end
+=end
 
+    #
     def layout=(layout)
-      if FalseClass === layout
+      case layout
+      when false, nil
         @layout = nil
       else
-        @layout = layout || default_layout
+        @layout = layout
       end
     end
 
     #
     def tags=(entry)
-      return entry unless entry
       case entry
       when String, Symbol
         entry = entry.to_s.strip
