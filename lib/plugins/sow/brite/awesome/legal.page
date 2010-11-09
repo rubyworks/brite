@@ -1,0 +1,28 @@
+---
+title   : Legal
+layout  : page
+stencil : erb
+
+--- html
+
+<% if file = project.exist?('COPYING*') %>
+<h1>COPYING</h1>
+<pre>
+<%= File.read(file) %>
+</pre>
+<% end %>
+
+<% if file = project.exist?('LICENSE*') %>
+<h1>LICENCE</h1>
+<pre>
+<%= File.read(file) %>
+</pre>
+<% end %>
+
+<% if file = project.exist?('NOTICE*') %>
+<h1>NOTICE</h1>
+<pre>
+<%= File.read(file) %>
+</pre>
+<% end %>
+

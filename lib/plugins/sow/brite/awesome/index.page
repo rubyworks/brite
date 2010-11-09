@@ -1,0 +1,18 @@
+---
+title   : Welcome
+layout  : page
+stencil : erb
+
+--- html
+
+<div id="doc">
+  <p><%= project.metadata.description %></p><br/>
+  <a href="#" onclick="$('#readme').toggle();">Toggle README</a>
+</div>
+
+<div id="readme" style="display: none;">
+<div class="centered">
+  <%= yield %>
+</div>
+</div>
+

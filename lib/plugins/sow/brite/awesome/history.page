@@ -1,0 +1,15 @@
+---
+title   : History
+layout  : page
+stencil : erb
+
+--- html
+
+<% if file = project.exist?('HISTORY*') %>
+  <% if File.extname(file) == '' %>
+    <%= render('HISTORY*', :type=>'rdoc') %>
+  <% else %>
+    <%= render('HISTORY*') %>
+  <% end %>
+<% end %>
+

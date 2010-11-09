@@ -1,0 +1,28 @@
+---
+title   : About
+layout  : page
+stencil : erb
+
+--- html
+
+<%= if file = project.exist?('{,meta}{PACKAGE,VERSION}*') %>
+<h1>VERSION</h1>
+<pre>
+<%= File.read(file) %>
+<% end %>
+</pre>
+
+<%= if file = project.exist?('{,meta}{PROFILE}*') %>
+<h1>PROFILE</h1>
+<pre>
+<%= File.read(file) %>
+</pre>
+<% end %>
+
+<%= if file = project.exist?('{MANIFEST}*') %>
+<h1>MANIFEST</h1>
+<pre>
+<%= read('MANIFEST*') %>
+<%= File.read(file) %>
+</pre>
+<% end %>
