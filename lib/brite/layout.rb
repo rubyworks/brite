@@ -18,10 +18,12 @@ module Brite
       #@content = output
       #attributes = attributes.merge('content'=>output)
 
-      output = @document.render(attributes, &content).to_s
+      context = Context.new(attributes)
+
+      output = @template.render(context, &content).to_s
 
       if layout
-        output = site.lookup_layout(layout).render(attributes){ output }
+        output = site.lookup_layout(layout).render(context){ output }
       end
 
       output

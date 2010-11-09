@@ -1,13 +1,16 @@
+raise 'here'
+
 #require 'tilt'
 require 'malt'
 
 module Brite
 
-  # Stencil controls rendering to a variety
-  # of back-end templating and markup systems.
   #
-  module TemplateEngine
-    extend self
+  class Template
+
+    def initialize(attributes)
+      @attributes = attributes
+    end
 
     #
     def render(stencil, format, text, attributes, &content)
@@ -46,8 +49,8 @@ module Brite
       #when 'rdoc'  # TODO: Remove when next version of tilt is released.
       #  rdoc(text)
       else
-        doc = Malt.text(text, :format=>format)
-        doc.render
+        #context = TemplateContext.new
+        Malt.render(text, :to=>format) #, :data=>context)
         #if engine = Tilt[format]
         #  engine.new{text}.render #(context)
         #else
@@ -64,7 +67,6 @@ module Brite
         text
       end
     end
-
 
     #
     #def redcloth(input)
@@ -132,11 +134,19 @@ module Brite
 
     #
     def render_stencil(stencil, text, attributes, &content)
-      if engine = Tilt[stencil]
-        engine.new{text}.render(nil, attributes, &content)
-      else
-        text
-      end
+p "OH NO TILT!!!!"
+      #if Malt.support?(stencil)
+        context = TemplateContext.new(attributes)
+        Malt.render(text, :to=>format, :data=>context, &content)
+      #else
+      #  text
+      #end
+
+      #if engine = Tilt[stencil]
+      #  engine.new{text}.render(nil, attributes, &content)
+      #else
+      #  text
+      #end
     end
 
     #
@@ -221,30 +231,41 @@ module Brite
 
   #end
 
+  # TODO: Make this a configuration option.
+  require 'gemdo'
+
   # = Clean Rendering Context
   #
-  # The TemplateContext is is used by ERB.
+  # The TemplateContext is used by Malt (eg. ERB).
 
   class TemplateContext
     #include TemplateFilters
 
-    instance_methods(true).each{ |m| private m unless m =~ /^__/ }
+    instance_methods(true).each{ |m| private m unless m =~ /^(__|inspect$)/ }
 
     def initialize(attributes={})
       @attributes = attributes
     end
 
-    def __binding__
+    #
+    def render(file)
+      Malt.render(:file=>file)
+    end
+
+    #
+    def to_binding
       binding
     end
 
+    #
     def to_h
       @attributes
     end
 
+    #
     def method_missing(s, *a)
       s = s.to_s
-      @attributes.key?(s) ? @attributes[s] : super
+      @attributes.key?(s) ? @attributes[s] : super(s,*a)
     end
   end
 

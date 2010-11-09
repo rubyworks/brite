@@ -2,7 +2,6 @@ require 'brite/config'
 require 'brite/page'
 require 'brite/post'
 require 'brite/layout'
-require 'brite/template'
 
 #
 module Brite
@@ -129,6 +128,11 @@ module Brite
     #
     def url
       config.url
+    end
+
+    # TODO: incorporate location
+    def project
+      @project ||= Gemdo::Project.new
     end
 
     #

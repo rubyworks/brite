@@ -1,56 +1,91 @@
 require 'neapolitan'
-require 'brite/part'
+#require 'brite/part'
+require 'brite/context'
 
 module Brite
 
   # Page class
   class Page
 
-    attr :file
-
-    #
-    attr :header
-
-    # Template type (rhtml or liquid)
-    attr :stencil
-
-    # Layout name (relative filename less extension)
-    attr :layout
-
-    # Author
-    attr :author
-
-    # Title of page/post
-    attr :title
-
-    # Publish date
-    attr :date
-
-    # Tags (labels)
-    attr :tags
-
-    # Category ("a glorified tag")
-    attr :category
-
-    # Rendering of each part.
-    attr :renders
-
-    # Rendered output.
-    attr :content
-
-    # output extension (defualt is 'html')
-    attr :extension
-
     #
     def initialize(site, file)
       @site    = site
       @file    = file
-      @parts   = []
-      @renders = []
+
+      @output  = nil
+      @summary = nil  # TODO: make part of neapolitan?
+
+      @attributes = {}
 
       @layout  = default_layout
 
       parse
+    end
+
+    #
+    attr :file
+
+    #
+    attr :site
+
+    # Template type (rhtml or liquid)
+    attr_accessor :stencil
+
+    # Layout name (relative filename less extension)
+    attr :layout
+
+    #
+    def layout=(layout)
+      case layout
+      when false, nil
+        @layout = nil
+      else
+        @layout = layout
+      end
+    end
+
+    #
+    attr :attributes
+
+    #
+    #attr :header
+
+    # Author
+    #attr :author
+
+    # Title of page/post
+    #attr :title
+
+    # Publish date
+    #attr :date
+
+    # Tags (labels)
+    #attr :tags
+
+    # Category ("a glorified tag")
+    #attr :category
+
+    # Rendering of each part.
+    #attr :renders
+
+    #
+    #attr :parts
+
+    # Rendered output.
+    #attr :content
+
+    # Output extension (defualt is 'html')
+    def extension
+      @extension ||= '.html'
+    end
+
+    # Set output extension.
+    def extension=(extname)
+      @extension = (
+        e = (extname || 'html').to_s
+        e = '.' + e unless e.start_with?('.')
+        e
+      )
     end
 
     #
@@ -69,11 +104,18 @@ module Brite
     end
 
     #
-    def extension
-      @extension ||= '.html'
+    def output
+      @output ||= File.basename(file).chomp(File.extname(file)) + extension
+    end
+
+    #
+    def output=(fname)
+      @output = File.join(File.dirname(file), fname) if fname
+      @output
     end
 
     # DEPRECATE: Get rid of this and use rack to test page instead of files.
+    # OTOH, that may not alwasy be possible we may need to keep this.
     def root
       '../' * file.count('/')
     end
@@ -99,59 +141,68 @@ module Brite
     #end
 
     #
-    def to_h
-      {
-        'url'      => url,
-        'path'     => path,
-        'author'   => author,
-        'title'    => title,
-        'date'     => date,
-        'tags'     => tags,
-        'category' => category,
-        'summary'  => summary,
-        'header'   => header
-        #'yield'    => content
-      }
+    def dryrun?
+      site.dryrun
     end
 
     #
-    def save(output=nil)
-      output ||= Dir.pwd  # TODO
-      text  = render
-      fname = file.chomp(File.extname(file)) + extension
-      if dryrun
-        puts "[DRYRUN] write #{fname}"
-      else
-        puts "write #{fname}"
-        File.open(fname, 'w'){ |f| f << text }
-      end
+    def to_h
+      attributes.merge(
+        'url'      => url,
+        'path'     => path,
+        'summary'  => summary
+        #'yield'    => content
+      )
     end
 
     #
     def to_contextual_attributes
-      to_h.merge('site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work)
+      to_h.merge(
+        'site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work, 'project'=>site.project
+      )
     end
 
     #
-    def to_liquid
-      to_contextual_attributes
-    end
+    #def to_liquid
+    #  to_contextual_attributes
+    #end
 
-  protected
+    #
+    def save(dir=nil)
+      dir   = dir || Dir.pwd  # TODO
+      text  = render
+      fname = output
+      if dryrun?
+        puts "[DRYRUN] write #{fname}"
+      else
+        if File.exist?(fname)
+          current = File.read(fname)
+        else
+          current = nil
+        end
+        if current != text or $FORCE
+          puts "  write: #{fname}"
+          File.open(fname, 'w'){ |f| f << text }
+        else
+          puts "   kept: #{fname}"
+        end
+      end
+    end
 
     #--
-    # TODO: Should validate front matter before any processing.
-    #
     # TODO: Improve this code in general, what's up with output vs. content?
     #++
-    def render(inherit={})
+    def render(inherit={}, &body)
       attributes = to_contextual_attributes
       attributes = attributes.merge(inherit)
 
-      render = @document.render(attributes)
+      context = Context.new(attributes)
+      render = @template.render(context, &body)
       output = render.to_s
 
-      @summary = render.summary
+      # To get the first rendered part.
+      # TODO: make part of Neapolitan
+      @summary = @attributes[summary] = render.summary
 
       #attributes['content'] = content if content
       #@renders = parts.map{ |part| part.render(stencil, attributes) }
@@ -169,41 +220,24 @@ module Brite
       output.strip
     end
 
-  private
-
-    #
-    def site
-      @site
-    end
-
-    #
-    def parts
-      @parts
-    end
-
-    #
-    def dryrun
-      site.dryrun
-    end
-
-    #
+    # TODO: Should validate front matter before any processing.
     def parse
-      @document = Neapolitan::Document.new(file)
-      @template = @document.template
+      @template   = Neapolitan.file(file, :stencil=>'erb')
+      @attributes = @template.header
 
-      @header     = @template.header
+      self.output    = @attributes.delete('output')
+      self.layout    = @attributes.delete('layout')
+      #self.stencil  = @attributes.delete('stencil') || site.defaults.stencil
+      self.extension = @attributes.delete('extension')
 
-      @stencil    = @header['stencil'] || site.defaults.stencil
+      @attributes['author']    ||= 'Anonymous'
+      @attributes['date']      ||= (date_from_filename(file) || Time.now)
 
-      @author     = @header['author']  || 'Anonymous'
-      @title      = @header['title']
-      @date       = @header['date'] || date_from_filename(file) || Time.now
-      @category   = @header['category']
-      @extension  = @header['extension']
-      @summary    = @header['summary']
+      @attributes['title']     ||= nil
+      @attributes['category']  ||= nil
+      @attributes['summary']   ||= nil
 
-      self.tags   = @header['tags']
-      self.layout = @header['layout']
+      @attributes['tags'] = parse_tags(@attributes['tags'])
     end
 
     #
@@ -211,6 +245,38 @@ module Brite
       if md = (/^\d\d\d\d-\d\d-\d\d/.match(file))
         md[1]
       end
+    end
+
+    #
+    def parse_tags(entry)
+      case entry
+      when String, Symbol
+        entry = entry.to_s.strip
+        if entry.index(/[,;]/)
+          entry = entry.split(/[,;]/)
+        else
+          entry = entry.split(/\s+/)
+        end
+      else
+        entry = entry.to_a.flatten
+      end
+      entry.map{ |e| e.strip }
+    end
+
+    # Default layout is different for pages vs. posts, so we
+    # use this method to differntiation them.
+    def default_layout
+      site.defaults.pagelayout
+    end
+
+    #
+    def to_s
+      file
+    end
+
+    #
+    def inspect
+      "<#{self.class}: #{file}>"
     end
 
 =begin
@@ -240,9 +306,7 @@ module Brite
       end
 
     end
-=end
 
-=begin
     #
     def parse_header(head)
       @stencil    = head['stencil'] || site.defaults.stencil
@@ -257,48 +321,6 @@ module Brite
       self.layout = head['layout']
     end
 =end
-
-    #
-    def layout=(layout)
-      case layout
-      when false, nil
-        @layout = nil
-      else
-        @layout = layout
-      end
-    end
-
-    #
-    def tags=(entry)
-      case entry
-      when String, Symbol
-        entry = entry.to_s.strip
-        if entry.index(/[,;]/)
-          entry = entry.split(/[,;]/)
-        else
-          entry = entry.split(/\s+/)
-        end
-      else
-        entry = entry.to_a.flatten
-      end
-      @tags = entry.map{ |e| e.strip }
-    end
-
-    # Default layout is different for pages vs. posts, so we
-    # use this method to differntiation them.
-    def default_layout
-      site.defaults.pagelayout
-    end
-
-  public
-
-    def to_s
-      file
-    end
-
-    def inspect
-      "<#{self.class}: #{file}>"
-    end
 
   end
 
