@@ -7,7 +7,7 @@ module Brite
   # Page class
   class Page
 
-    #
+    # New Page.
     def initialize(site, file)
       @site    = site
       @file    = file
@@ -22,10 +22,10 @@ module Brite
       parse
     end
 
-    #
+    # Path of page file.
     attr :file
 
-    #
+    # Instance of Site class to which this page belongs.
     attr :site
 
     # Template type (rhtml or liquid)
@@ -155,7 +155,7 @@ module Brite
       )
     end
 
-    #
+    # Convert pertinent information to a Hash to be used in rendering.
     def to_contextual_attributes
       to_h.merge(
         'site'=>site.to_h, 'page'=>to_h, 'root'=>root, 'work'=>work, 'project'=>site.project

@@ -2,6 +2,8 @@ module Brite
 
   # Layout class
   class Layout < Page
+
+    # Layouts cannot be saved.
     undef_method :save
 
     #def to_contextual_attributes

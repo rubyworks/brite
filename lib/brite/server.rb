@@ -8,7 +8,10 @@ require 'rack/file'
 
 module Brite
 
-  #
+  # Brite::Server is a Rack-based server useful for testing sites locally.
+  # not all sites --in fact, most sites, can not be fully previewed via
+  # static files. A webserver is required to render and navigate a site
+  # completely. So this light server is provided to facilitate this.
   class Server < ::Rack::Server
 
     class Options

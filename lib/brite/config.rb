@@ -5,21 +5,30 @@ module Brite
   # Configuration
   class Config
 
-    #
-    DEFAULTS = {
-      :url     => 'http://0.0.0.0:4321',
-      :stencil => 'rhtml',
-      :format  => nil, #'html',
-      :page    => 'page',
-      :post    => 'post'
-    }
+    # Configuration file name glob.
+    CONFIG_FILE = '{.,}brite{,.yml,.yaml}'
 
-    # Site's absolute URL. Where possible links a relative,
+    # Default URL, which is just for testing purposes.
+    DEFAULT_URL     = 'http://0.0.0.0:4321'
+
+    # Default stencil.
+    DEFAULT_STENCIL = 'rhtml'
+
+    # Default format.
+    DEFAULT_FORMAT  = nil #html
+
+    # Default page layout file name (less `.layout` extension).
+    DEFAULT_PAGE_LAYOUT = 'page'
+
+    # Default post layout file name (less `.layout` extension).
+    DEFAULT_POST_LAYOUT = 'post'
+
+    # Site's absolute URL. Where possible links are relative,
     # but it is not alwasy possible. So a URL should *ALWAYS*
     # be provided for the site.
-    #
-    # TODO: Allow +url+ to be set via the command line when
-    # generating the site.
+    #--
+    # TODO: Allow +url+ to be set via the command line when generating the site.
+    #++
     attr_accessor :url
 
     # Defaut section template engine.
@@ -28,24 +37,25 @@ module Brite
     # Default section markup format.
     attr_accessor :format
 
-    # Default page layout.
+    # Default page layout file name.
     attr_accessor :page
 
-    # Default post layout.
+    # Default post layout file name.
     attr_accessor :post
 
-    #
+    # New instance of Config.
     def initialize
-      @url     = DEFAULTS[:url]
-      @stencil = DEFAULTS[:stencil]
-      @format  = DEFAULTS[:format]
-      @page    = DEFAULTS[:page]
-      @post    = DEFAULTS[:post]
+      @url     = DEFAULT_URL
+      @stencil = DEFAULT_STENCIL
+      @format  = DEFAULT_FORMAT
+      @page    = DEFAULT_PAGE_LAYOUT
+      @post    = DEFAULT_POST_LAYOUT
       configure
     end
 
+    # Load configuration file.
     def configure
-      if file = Dir['{.,}brite{,.yml,.yaml}'].first
+      if file = Dir[CONFIG_FILE].first
         data = YAML.load(File.new(file))
         data.each do |k,v|
           __send__("#{k}=", v)
@@ -76,7 +86,7 @@ module Brite
     def gemdo=(set)
       return unless set
       require 'gemdo'        
-      Brite::TemplateContext.class_eval do
+      Brite::Context.class_eval do
         def project
           @project ||= Gemdo::Project.new
         end

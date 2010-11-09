@@ -1,15 +1,13 @@
 # TODO: Make this a configuration option
-require 'gemdo'
+#require 'gemdo'
 
 module Brite
 
-  # = Clean Rendering Context
+  # Context class provides a clean rendering context for rendering
+  # pages and posts.
   #
-  # The Context is passed to Malt (eg. ERB).
-
+  # The Context instance is passed to Malt (eg. ERB).
   class Context
-    #include TemplateFilters
-
     #instance_methods(true).each{ |m| private m unless m =~ /^(__|inspect$)/ }
 
     def initialize(attributes={})
@@ -22,10 +20,14 @@ module Brite
       end     
     end
 
+    # Using ERB, the #render method can be used to render external files
+    # and embed them in the current document. This is useful, for example,
+    # when rendering a project's README file as part of a project website.
     #
-    def render(file, opts={})
-      opts[:file] = file
-      Malt.render(opts)
+    # The +file+ is rendered via Malt.
+    def render(file, options={})
+      options[:file] = file
+      Malt.render(options)
     end
 
     #
