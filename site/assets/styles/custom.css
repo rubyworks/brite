@@ -3,7 +3,7 @@
 /* LAYOUT */
 
 pre {
-  -moz-border-radius: 10px; border: 1px solid #ccc; padding: 10px 10px; color: yellow; background: #ff3600;
+  -moz-border-radius: 10px; border: 1px solid #ccc; padding: 10px 10px; color: #ff3600; background: #eeeeee;
   font-family: courier, monospace; font-size: 13px; font-weight: bold;
 }
 
@@ -33,9 +33,9 @@ li p {
 
 /* CLASS STYLES */
 
-.page { margin: 0 auto; width: 700px; }
+.page { margin: 0 auto; width: 650px; }
 
-.content { padding: 0; }
+.content { padding: 0 10px; }
 
 .heading { font-size: 2em; }
 
@@ -62,8 +62,12 @@ li p {
 #header {
   height: 240px;
   position: relative;
-  border-top: 2px solid yellow;
-  border-bottom: 2px solid yellow;
+  border-top: 0px solid yellow;
+  border-bottom: 0px solid yellow;
+  color: #ff3600;
+  /* background: #ff3600; */
+  background: #ffffff;
+  padding: 0;
 }
 
 #header .title {
@@ -94,11 +98,6 @@ li p {
 
 
 /* --------- COLOR ----------- */
-
-#header {
-  color: white;
-  background: #ff3600;
-}
 
 #menu { background: white; /* url(./images/bg.jpg) center repeat-x; } */
 #menu a { color: orange; }

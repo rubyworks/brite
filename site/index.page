@@ -17,7 +17,7 @@ You will likely want to install Brite via RubyGems.
   $ gem install brite
 
 If you're old fashion and want to install to a site
-location, please see Setup.rb (http://proutils.github.com/setup).
+location, please see Setup.rb[http://rubyworks.github.com/setup].
 
 A good way to get started is to look at the files for this website or
 at the Sow template for a brite project.
@@ -34,10 +34,8 @@ In either case you will see somthing along the lines of these files:
 
   2010/01/sample.post
   assets/images/logo.jpg
-  assets/styles/class.css
-  assets/styles/id.css
+  assets/styles/custom.css
   assets/styles/reset.css
-  assets/styles/tag.css
   page.layout
   post.layout
   index.page
@@ -56,7 +54,7 @@ And all things are made bright :)
 
 = Copyright & License
 
-Copyright (c) 2009 Thomas Sawyer
+Copyright (c) 2010 Thomas Sawyer
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
