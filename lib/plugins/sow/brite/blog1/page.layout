@@ -58,7 +58,7 @@ stencil: liquid
 
 <div id="main">
   <div class="content">
-    {{ content }}
+    {{ yield }}
   </div>
 </div>
 
@@ -71,7 +71,7 @@ stencil: liquid
 
   Copyright (c) 2005-2008 Yser the Ab'user <br/><br/>
 
-  Brite & ProUtils were created by Thomas Sawyer (7rans).<br/>
+  Brite were created by Thomas Sawyer (7rans).<br/>
 
   Brite is released under the terms of the GPLv3 license.<br/>
 
