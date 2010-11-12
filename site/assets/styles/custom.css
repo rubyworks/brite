@@ -35,6 +35,8 @@ li p {
 
 .page { margin: 0 auto; width: 650px; }
 
+.page-wide { margin: 0 auto; width: 740px; text-align: center; }
+
 .content { padding: 0 10px; }
 
 .heading { font-size: 2em; }
