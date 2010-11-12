@@ -1,3 +1,49 @@
+/* TAG STYLES */
+
+/* LAYOUT */
+
+pre {
+  -moz-border-radius: 10px; border: 1px solid #ccc; padding: 10px 10px; color: yellow; background: #ff3600;
+  font-family: courier, monospace; font-size: 13px; font-weight: bold;
+}
+
+
+/* COLOR */
+
+a {
+  color: #ff3600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  color: #555;
+  font-size: 14px;
+}
+
+h1,h2 {
+  color: #ff3600;
+}
+
+li p {
+  margin: 0; padding: 0;
+}
+
+/* CLASS STYLES */
+
+.page { margin: 0 auto; width: 700px; }
+
+.content { padding: 0; }
+
+.heading { font-size: 2em; }
+
+.heading .title { font-size: 1.3em; font-weight: bold; color: #ff4455; }
+.heading .title:hover { color: #2454ad; }
+
+.heading .date  { font-size: 0.7em; }
+
 /* ID STYLES */
 
 

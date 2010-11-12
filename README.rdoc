@@ -1,42 +1,61 @@
 = Brite
 
-(Shiny Static Website Generator)
+A Shiny Static Website Generator
 
 * home: http://proutils.github.com/brite
-* source: http://github.com/proutils/brite
+* code: http://github.com/proutils/brite
 
 
 == DESCRIPTION
 
 Brite is an inovative static website/blog generation utility
-which is extremely easy to use as it is versitle.
+which is as easy to use as it is versitle.
 
-== FEATURES/ISSUES
 
-* Awesome
-* Extra Cool
-* And Dyn-o-mite!
+== FEATURES
+
+* Generates files in place (no special subdirectories required).
+* Utilizes multi-format templates via Neapolitan.
+* Supports many markup and templating formats.
 
 
 == SYNOPSIS
 
-For now please see the Brite website and API documentation.
+To use Brite create .page, .post and .layout files and then
+run:
+
+  $ brite
+
+For details please see the Brite website and the GitHub repository. In
+particular have a look at the `site/` directory which contains Brites
+own website built on Brite.
 
 
 == HOW TO INSTALL
 
-You know the routine ;)
+=== RubyGems
 
-  $ sudop gem install brite
+  $ sudo gem install brite
+
+=== Setup.rb
 
 If you're old fashion and want to install to a site
-location, see Setup.rb (http://protuils.github.com/setup).
+location, see Setup.rb[http://rubyworks.github.com/setup].
 
 
 == COPYRIGHT/LICENSE
 
-Brite is Copyright (c) 2009 Thomas Sawyer
+Copyright (c) 2009 Thomas Sawyer
 
-It is distributed under the terms of the MIT license.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 

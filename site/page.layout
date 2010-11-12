@@ -35,9 +35,7 @@ stencil: liquid
       <link href="{{root}}assets/styles/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
 
-  <link href="{{root}}assets/styles/tag.css"    rel="stylesheet" type="text/css" />
-  <link href="{{root}}assets/styles/id.css"     rel="stylesheet" type="text/css" />
-  <link href="{{root}}assets/styles/class.css"  rel="stylesheet" type="text/css" />
+  <link href="{{root}}assets/styles/custom.css" rel="stylesheet" type="text/css" />
 
   <!-- <link href="{{root}}assets/styles/syntax.css"  rel="stylesheet" type="text/css" /> -->
   <!-- <script src="js/rdocs.js" type="text/javascript"></script> -->
@@ -73,7 +71,7 @@ stencil: liquid
   <br style="float: clear;"/>
 
   <div class="content">
-    {{ content }}
+    {{ yield }}
   </div>
 
   <br style="clear: both;"/><br/><br/>
