@@ -1,3 +1,4 @@
+require 'yaml'
 require 'ostruct'
 
 module Brite

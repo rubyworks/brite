@@ -1,3 +1,4 @@
+require 'optparse'
 require 'brite/controller'
 
 module Brite
