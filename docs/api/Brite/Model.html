@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Brite::Model</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Brite</a>&nbsp;
+      <a href="/">Brite::Model</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../lib/brite/models/model_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/brite/models/model.rb">lib/brite/models/model.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-attr_accessor">::attr_accessor</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-omit_field">::omit_field</a>
+            </li>
+          
+            
+            <li class="singleton">
+              <a href="#method-c-omit_fields">::omit_fields</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-%5B%5D%3D">#[]=</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-omit_fields">#omit_fields</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-rendering_fields">#rendering_fields</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-singleton_class">#singleton_class</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-to_binding">#to_binding</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-to_h">#to_h</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-to_liquid">#to_liquid</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../Brite.html">Brite</a></li>
+        
+          <li class="class"><a href="../Brite/Command.html">Brite::Command</a></li>
+        
+          <li class="class"><a href="../Brite/Config.html">Brite::Config</a></li>
+        
+          <li class="class"><a href="../Brite/Controller.html">Brite::Controller</a></li>
+        
+          <li class="class"><a href="../Brite/Layout.html">Brite::Layout</a></li>
+        
+          <li class="class"><a href="../Brite/Model.html">Brite::Model</a></li>
+        
+          <li class="class"><a href="../Brite/Page.html">Brite::Page</a></li>
+        
+          <li class="class"><a href="../Brite/Post.html">Brite::Post</a></li>
+        
+          <li class="class"><a href="../Brite/Server.html">Brite::Server</a></li>
+        
+          <li class="class"><a href="../Brite/Server/Options.html">Brite::Server::Options</a></li>
+        
+          <li class="class"><a href="../Brite/Site.html">Brite::Site</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Model</h1>
+      
+
+      
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="attr-accessor-method" class="method-detail ">
+        <a name="method-c-attr_accessor"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">attr_accessor</span><span
+            class="method-args">(name, &default)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="attr-accessor-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 17</span>
+17:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attr_accessor</span>(<span class="ruby-identifier">name</span>, &amp;<span class="ruby-identifier">default</span>)
+18:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+19:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>
+20:         <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword kw">do</span>
+21:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{name}&quot;</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">instance_eval</span>(&amp;<span class="ruby-identifier">default</span>)
+22:           (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+23:             <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>){ <span class="ruby-identifier">value</span> }
+24:           <span class="ruby-keyword kw">end</span>
+25:           <span class="ruby-identifier">value</span>
+26:         <span class="ruby-keyword kw">end</span>
+27:       <span class="ruby-keyword kw">else</span>
+28:         <span class="ruby-identifier">attr_reader</span>(<span class="ruby-identifier">name</span>)
+29:       <span class="ruby-keyword kw">end</span>
+30:       <span class="ruby-identifier">attr_writer</span>(<span class="ruby-identifier">name</span>)
+31:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="omit-field-method" class="method-detail ">
+        <a name="method-c-omit_field"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">omit_field</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Designate a field to be omitted from rendering context.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="omit-field-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 7</span>
+7:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">omit_field</span>(<span class="ruby-identifier">name</span>)
+8:       <span class="ruby-identifier">omit_fields</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value str">&quot;1.9&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+9:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="omit-fields-method" class="method-detail ">
+        <a name="method-c-omit_fields"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">omit_fields</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an Array of omitted fields for this class.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="omit-fields-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 12</span>
+12:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">omit_fields</span>
+13:       <span class="ruby-ivar">@omit_fields</span> <span class="ruby-operator">||=</span> []
+14:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="--method" class="method-detail ">
+        <a name="method-i-%5B%5D%3D"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">[]=</span><span
+            class="method-args">(k,v)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Define a singleton method for given key-value pair.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)
+35:       (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+36:         <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">k</span>){<span class="ruby-identifier">v</span>}
+37:       <span class="ruby-keyword kw">end</span>
+38:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="omit-fields-method" class="method-detail ">
+        <a name="method-i-omit_fields"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">omit_fields</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an Array of attribute/method names explicitly omitted from being
+visible from the rendering.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="omit-fields-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">omit_fields</span>
+82:       <span class="ruby-identifier">list</span> = []
+83:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ancestor</span><span class="ruby-operator">|</span>
+84:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">ancestor</span>.<span class="ruby-identifier">omit_fields</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ancestor</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:omit_fields</span>)
+85:       <span class="ruby-keyword kw">end</span>
+86:       <span class="ruby-identifier">list</span>
+87:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="rendering-fields-method" class="method-detail ">
+        <a name="method-i-rendering_fields"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">rendering_fields</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an Array of attribute/method names to be visible to the page
+rendering.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="rendering-fields-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 65</span>
+65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rendering_fields</span>
+66:       <span class="ruby-identifier">list</span> = <span class="ruby-identifier">public_methods</span> 
+67:       <span class="ruby-identifier">list</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">Model</span>.<span class="ruby-identifier">public_instance_methods</span>
+68:       <span class="ruby-identifier">list</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">omit_fields</span>
+69:       <span class="ruby-identifier">list</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+70:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+71:         <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/\W+/</span>  <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">false</span>
+72:         <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^to_/</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">false</span>
+73:         <span class="ruby-keyword kw">else</span>
+74:           <span class="ruby-keyword kw">true</span>
+75:         <span class="ruby-keyword kw">end</span>
+76:       <span class="ruby-keyword kw">end</span>
+77:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="singleton-class-method" class="method-detail ">
+        <a name="method-i-singleton_class"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">singleton_class</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="singleton-class-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 90</span>
+90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">singleton_class</span>
+91:       (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>)
+92:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-binding-method" class="method-detail ">
+        <a name="method-i-to_binding"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_binding</span><span
+            class="method-args">(&block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns a Binding for this instance.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-binding-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 41</span>
+41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_binding</span>(&amp;<span class="ruby-identifier">block</span>)
+42:       <span class="ruby-identifier">binding</span>
+43:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-h-method" class="method-detail ">
+        <a name="method-i-to_h"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_h</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns a Hash of rendering fields.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-h-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+47:       <span class="ruby-identifier">hash</span>   = {}
+48:       <span class="ruby-identifier">fields</span> = <span class="ruby-identifier">rendering_fields</span>
+49:       <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span>
+50:         <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">field</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">field</span>)
+51:       <span class="ruby-keyword kw">end</span>
+52:       <span class="ruby-comment cmt">#extra.each do |k,v|</span>
+53:       <span class="ruby-comment cmt">#  hash[k.to_s] == v</span>
+54:       <span class="ruby-comment cmt">#end</span>
+55:       <span class="ruby-identifier">hash</span>
+56:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="to-liquid-method" class="method-detail ">
+        <a name="method-i-to_liquid"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">to_liquid</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+In case Liquid template is used.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="to-liquid-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/models/model.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_liquid</span>
+60:       <span class="ruby-identifier">to_h</span>
+61:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

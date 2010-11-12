@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: Brite::Controller</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/class.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="class">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">Brite</a>&nbsp;
+      <a href="/">Brite::Controller</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../lib/brite/controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/brite/controller.rb">lib/brite/controller.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
+    </div>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Namespace Contents -->
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="singleton">
+              <a href="#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-build">#build</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-config">#config</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-dryrun%3F">#dryrun?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-initialize_page">#initialize_page</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-initialize_post">#initialize_post</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-initialize_site">#initialize_site</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-layouts">#layouts</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-lookup_layout">#lookup_layout</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-render">#render</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-save">#save</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-trace%3F">#trace?</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#method-i-url">#url</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+        
+          <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../Brite.html">Brite</a></li>
+        
+          <li class="class"><a href="../Brite/Command.html">Brite::Command</a></li>
+        
+          <li class="class"><a href="../Brite/Config.html">Brite::Config</a></li>
+        
+          <li class="class"><a href="../Brite/Controller.html">Brite::Controller</a></li>
+        
+          <li class="class"><a href="../Brite/Layout.html">Brite::Layout</a></li>
+        
+          <li class="class"><a href="../Brite/Model.html">Brite::Model</a></li>
+        
+          <li class="class"><a href="../Brite/Page.html">Brite::Page</a></li>
+        
+          <li class="class"><a href="../Brite/Post.html">Brite::Post</a></li>
+        
+          <li class="class"><a href="../Brite/Server.html">Brite::Server</a></li>
+        
+          <li class="class"><a href="../Brite/Server/Options.html">Brite::Server::Options</a></li>
+        
+          <li class="class"><a href="../Brite/Site.html">Brite::Site</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>Controller</h1>
+      
+
+      <p>
+The <a href="Controller.html">Controller</a> class is the primary <a
+href="../Brite.html">Brite</a> class, handling the generation of site
+files.
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+    <div id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="site-attribute-method" class="method-detail">
+        <a name="site"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">site</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>
+Returns an instance of <a href="Site.html">Site</a>.
+</p>
+        
+        </div>
+      </div>
+      
+      <div id="location-attribute-method" class="method-detail">
+        <a name="location"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">location</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="output-attribute-method" class="method-detail">
+        <a name="output"></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Methods -->
+    
+    <div id="public-class-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="new-method" class="method-detail ">
+        <a name="method-c-new"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">new</span><span
+            class="method-args">(options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+New <a href="Controller.html">Controller</a>.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 15</span>
+15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+16:       <span class="ruby-ivar">@location</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:location</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+17:       <span class="ruby-ivar">@output</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:output</span>]
+18:       <span class="ruby-ivar">@url</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:url</span>]
+19:       <span class="ruby-ivar">@dryrun</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:dryrun</span>]
+20:       <span class="ruby-ivar">@trace</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:trace</span>]
+21: 
+22:       <span class="ruby-ivar">@layouts</span>  = []
+23: 
+24:       <span class="ruby-identifier">initialize_site</span>
+25:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="build-method" class="method-detail ">
+        <a name="method-i-build"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">build</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Build site.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="build-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 138</span>
+138:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build</span>
+139:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trace?</span>
+140:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Layouts: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">layouts</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">layout</span><span class="ruby-operator">|</span> <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">name</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+141:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Pages:   &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">pages</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">file</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+142:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Posts:   &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">posts</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">post</span><span class="ruby-operator">|</span> <span class="ruby-identifier">post</span>.<span class="ruby-identifier">file</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+143:         <span class="ruby-identifier">puts</span>
+144:       <span class="ruby-keyword kw">end</span>
+145:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">location</span>) <span class="ruby-keyword kw">do</span>
+146:         <span class="ruby-identifier">site</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">post</span><span class="ruby-operator">|</span>
+147:           <span class="ruby-identifier">save</span>(<span class="ruby-identifier">post</span>)
+148:         <span class="ruby-keyword kw">end</span>
+149:         <span class="ruby-identifier">site</span>.<span class="ruby-identifier">pages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+150:           <span class="ruby-identifier">save</span>(<span class="ruby-identifier">page</span>)
+151:         <span class="ruby-keyword kw">end</span>
+152:       <span class="ruby-keyword kw">end</span>
+153:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{site.pages.size + site.posts.size} Files: #{site.pages.size} Pages, #{site.posts.size} Posts&quot;</span>
+154:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-method" class="method-detail ">
+        <a name="method-i-config"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Access to configuration file data.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 100</span>
+100:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config</span>
+101:       <span class="ruby-ivar">@config</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Config</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">location</span>)
+102:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="dryrun--method" class="method-detail ">
+        <a name="method-i-dryrun%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">dryrun?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is `dryrun` mode on?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="dryrun--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 85</span>
+85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dryrun?</span>
+86:       <span class="ruby-ivar">@dryrun</span>
+87:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="initialize-page-method" class="method-detail ">
+        <a name="method-i-initialize_page"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">initialize_page</span><span
+            class="method-args">(file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <pre>
+ Returns an instance of Page.
+</pre>
+<p>
+++
+</p>
+<pre>
+ TODO: Limit Neapolitan to Markup formats only.</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="initialize-page-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 54</span>
+54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_page</span>(<span class="ruby-identifier">file</span>)
+55:       <span class="ruby-identifier">template</span> = <span class="ruby-constant">Neapolitan</span>.<span class="ruby-identifier">file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value">:stencil=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">config</span>.<span class="ruby-identifier">stencil</span>)
+56:       <span class="ruby-identifier">settings</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">header</span>
+57: 
+58:       <span class="ruby-identifier">settings</span>[<span class="ruby-value">:site</span>] = <span class="ruby-identifier">site</span>
+59:       <span class="ruby-identifier">settings</span>[<span class="ruby-value">:file</span>] = <span class="ruby-identifier">file</span>
+60: 
+61:       <span class="ruby-constant">Page</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">settings</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">page</span>) }
+62:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="initialize-post-method" class="method-detail ">
+        <a name="method-i-initialize_post"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">initialize_post</span><span
+            class="method-args">(file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an instance of <a href="Post.html">Post</a>.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="initialize-post-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 65</span>
+65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_post</span>(<span class="ruby-identifier">file</span>)
+66:       <span class="ruby-identifier">template</span> = <span class="ruby-constant">Neapolitan</span>.<span class="ruby-identifier">file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value">:stencil=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">config</span>.<span class="ruby-identifier">stencil</span>)
+67:       <span class="ruby-identifier">settings</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">header</span>
+68: 
+69:       <span class="ruby-identifier">settings</span>[<span class="ruby-value">:site</span>] = <span class="ruby-identifier">site</span>
+70:       <span class="ruby-identifier">settings</span>[<span class="ruby-value">:file</span>] = <span class="ruby-identifier">file</span>
+71: 
+72:       <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">settings</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">post</span><span class="ruby-operator">|</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">post</span>) }
+73:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="initialize-site-method" class="method-detail ">
+        <a name="method-i-initialize_site"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">initialize_site</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an instance of <a href="Site.html">Site</a>.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="initialize-site-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_site</span>
+29:       <span class="ruby-ivar">@site</span> = <span class="ruby-constant">Site</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:url=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>)
+30: 
+31:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">location</span>) <span class="ruby-keyword kw">do</span>
+32:         <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-value str">'**/*'</span>]
+33:         <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+34:           <span class="ruby-identifier">name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">file</span>)
+35:           <span class="ruby-identifier">ext</span>  = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file</span>)
+36:           <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">ext</span>
+37:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'.layout'</span>
+38:             <span class="ruby-identifier">layouts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Layout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">file</span>)
+39:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'.page'</span> <span class="ruby-comment cmt">#*%w{.markdown .rdoc .textile .whtml}</span>
+40:             <span class="ruby-ivar">@site</span>.<span class="ruby-identifier">pages</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">initialize_page</span>(<span class="ruby-identifier">file</span>)
+41:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'.post'</span>
+42:             <span class="ruby-ivar">@site</span>.<span class="ruby-identifier">posts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">initialize_post</span>(<span class="ruby-identifier">file</span>)
+43:           <span class="ruby-keyword kw">end</span>
+44:         <span class="ruby-keyword kw">end</span>
+45:       <span class="ruby-keyword kw">end</span>
+46:       <span class="ruby-ivar">@site</span>.<span class="ruby-identifier">posts</span>.<span class="ruby-identifier">sort!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">date</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">date</span> }
+47:       <span class="ruby-ivar">@site</span>
+48:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="layouts-method" class="method-detail ">
+        <a name="method-i-layouts"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">layouts</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns an Array of Layouts.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="layouts-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 95</span>
+95:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">layouts</span>
+96:       <span class="ruby-ivar">@layouts</span>
+97:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="lookup-layout-method" class="method-detail ">
+        <a name="method-i-lookup_layout"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">lookup_layout</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Lookup layout by name.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="lookup-layout-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 133</span>
+133:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_layout</span>(<span class="ruby-identifier">name</span>)
+134:       <span class="ruby-identifier">layouts</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">layout</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">name</span> }
+135:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="render-method" class="method-detail ">
+        <a name="method-i-render"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">render</span><span
+            class="method-args">(template, model)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code"
+            id="render-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 110</span>
+110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">model</span>) <span class="ruby-comment cmt">#scope=nil, &amp;body)</span>
+111:       <span class="ruby-comment cmt">#if scope</span>
+112:       <span class="ruby-comment cmt">#  scope.merge!(attributes)</span>
+113:       <span class="ruby-comment cmt">#else</span>
+114:       <span class="ruby-comment cmt">#  scope = to_scope</span>
+115:       <span class="ruby-comment cmt">#end</span>
+116: 
+117:       <span class="ruby-identifier">render</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>) <span class="ruby-comment cmt">#, &amp;body)</span>
+118: 
+119:       <span class="ruby-identifier">model</span>.<span class="ruby-identifier">summary</span> = <span class="ruby-identifier">render</span>.<span class="ruby-identifier">summary</span>  <span class="ruby-comment cmt"># TODO: make part of neapolitan?</span>
+120: 
+121:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">render</span>.<span class="ruby-identifier">to_s</span>
+122: 
+123:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">layout</span>
+124:         <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">lookup_layout</span>(<span class="ruby-identifier">model</span>.<span class="ruby-identifier">layout</span>)
+125:         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;No such layout -- #{layout}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">layout</span>
+126:         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>){ <span class="ruby-identifier">result</span> }
+127:       <span class="ruby-keyword kw">end</span>
+128: 
+129:       <span class="ruby-identifier">result</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>
+130:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="save-method" class="method-detail ">
+        <a name="method-i-save"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">save</span><span
+            class="method-args">(model)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Save page/post redering to disk.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="save-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 157</span>
+157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span>(<span class="ruby-identifier">model</span>)
+158:       <span class="ruby-identifier">file</span> = <span class="ruby-identifier">output</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">model</span>.<span class="ruby-identifier">output</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">output</span>
+159:       <span class="ruby-identifier">text</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">to_s</span>
+160: 
+161:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>)
+162:         <span class="ruby-identifier">current</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>)
+163:       <span class="ruby-keyword kw">else</span>
+164:         <span class="ruby-identifier">current</span> = <span class="ruby-keyword kw">nil</span>
+165:       <span class="ruby-keyword kw">end</span>
+166: 
+167:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">$FORCE</span>
+168:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dryrun?</span>
+169:           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;    dry run: #{file}&quot;</span>
+170:         <span class="ruby-keyword kw">else</span>
+171:           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;      write: #{file}&quot;</span>
+172:           <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'w'</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">text</span> }
+173:         <span class="ruby-keyword kw">end</span>
+174:       <span class="ruby-keyword kw">else</span>
+175:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  unchanged: #{file}&quot;</span>
+176:       <span class="ruby-keyword kw">end</span>
+177:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="trace--method" class="method-detail ">
+        <a name="method-i-trace%3F"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">trace?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Is `trace` mode on?
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="trace--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 90</span>
+90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trace?</span>
+91:       <span class="ruby-ivar">@trace</span>
+92:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="url-method" class="method-detail ">
+        <a name="method-i-url"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">url</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+URL of site as set in initializer or configuration file.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="url-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/brite/controller.rb, line 105</span>
+105:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url</span>
+106:       <span class="ruby-ivar">@url</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">config</span>.<span class="ruby-identifier">url</span>
+107:     <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
+</html>
+

@@ -35,9 +35,7 @@ stencil: liquid
       <link href="{{root}}assets/styles/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
 
-  <link href="{{root}}assets/styles/tag.css"    rel="stylesheet" type="text/css" />
-  <link href="{{root}}assets/styles/id.css"     rel="stylesheet" type="text/css" />
-  <link href="{{root}}assets/styles/class.css"  rel="stylesheet" type="text/css" />
+  <link href="{{root}}assets/styles/custom.css" rel="stylesheet" type="text/css" />
 
   <!-- <link href="{{root}}assets/styles/syntax.css"  rel="stylesheet" type="text/css" /> -->
   <!-- <script src="js/rdocs.js" type="text/javascript"></script> -->
@@ -51,16 +49,16 @@ stencil: liquid
 <div id="menu">
   <div class="page">
     <!-- <a href="{{root}}qedoc/index.html">QEDocs</a> &nbsp; -->
-    <a href="{{root}}rdoc/index.html">Documentation</a> &nbsp;
-    <a href="http://wiki.github.com/proutils/brite">Wiki-Wiki</a> &nbsp;
-    <a href="http://groups.google.com/group/proutils">Mailing List</a> &nbsp;
-    <a href="http://github.com/proutils/brite/">Development</a> &nbsp;
+    <a href="http://wiki.github.com/rubyworks/brite">WIKI</a> &nbsp;&nbsp;
+    <a href="{{root}}docs/api/index.html">API</a> &nbsp;&nbsp;
+    <a href="http://groups.google.com/group/rubyworks">TALK</a> &nbsp;&nbsp;
+    <a href="http://github.com/rubyworks/brite/">CODE</a> &nbsp;&nbsp;
   </div>
 </div>
 
 <div id="header">
   <div class="title page">
-    <img src="{{root}}assets/images/suno.jpg" align="right" height="220px" />
+    <img src="{{root}}assets/images/lightbulb.jpg" align="right" />
     Brite
   </div>
 </div>
@@ -73,7 +71,7 @@ stencil: liquid
   <br style="float: clear;"/>
 
   <div class="content">
-    {{ content }}
+    {{ yield }}
   </div>
 
   <br style="clear: both;"/><br/><br/>
@@ -104,18 +102,7 @@ stencil: liquid
 
   <br/><br/>
 
-  Copyright (c) 2005-2008 Thomas Sawyer <br/><br/>
-
-  Brite & ProUtils were created by Thomas Sawyer (7rans).<br/>
-
-  Brite is released under the terms of the GPLv3 license.<br/>
-
-  <br/><br/>
-
-  THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
-  IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-  PURPOSE.
+  Copyright (c) 2010 Thomas Sawyer <br/>
 </div>
 </div>
 

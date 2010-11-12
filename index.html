@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -29,9 +28,7 @@
       <link href="assets/styles/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
 
-  <link href="assets/styles/tag.css"    rel="stylesheet" type="text/css" />
-  <link href="assets/styles/id.css"     rel="stylesheet" type="text/css" />
-  <link href="assets/styles/class.css"  rel="stylesheet" type="text/css" />
+  <link href="assets/styles/custom.css" rel="stylesheet" type="text/css" />
 
   <!-- <link href="assets/styles/syntax.css"  rel="stylesheet" type="text/css" /> -->
   <!-- <script src="js/rdocs.js" type="text/javascript"></script> -->
@@ -45,15 +42,16 @@
 <div id="menu">
   <div class="page">
     <!-- <a href="qedoc/index.html">QEDocs</a> &nbsp; -->
-    <a href="rdoc/index.html">Documentation</a> &nbsp;
-    <a href="http://groups.google.com/group/proutils">Mailing List</a> &nbsp;
-    <a href="http://github.com/proutils/brite/">Development</a> &nbsp;
+    <a href="http://wiki.github.com/rubyworks/brite">WIKI</a> &nbsp;&nbsp;
+    <a href="docs/api/index.html">API</a> &nbsp;&nbsp;
+    <a href="http://groups.google.com/group/rubyworks">TALK</a> &nbsp;&nbsp;
+    <a href="http://github.com/rubyworks/brite/">CODE</a> &nbsp;&nbsp;
   </div>
 </div>
 
 <div id="header">
   <div class="title page">
-    <img src="assets/images/suno.jpg" align="right" height="220px" />
+    <img src="assets/images/lightbulb.jpg" align="right" />
     Brite
   </div>
 </div>
@@ -81,27 +79,27 @@ You will likely want to install Brite via RubyGems.
 </pre>
 <p>
 If you&#8217;re old fashion and want to install to a site location, please
-see Setup.rb (<a
-href="http://proutils.github.com/setup">proutils.github.com/setup</a>).
+see <a href="http://rubyworks.github.com/setup">Setup.rb</a>.
 </p>
 <p>
 A good way to get started is to look at the files for this website or at
 the Sow template for a brite project.
 </p>
 <ul>
-<li><a
-href="http://github.com/proutils/brite/tree/master/site">github.com/proutils/brite/tree/master/site</a>/
-
+<li><p>
+<a
+href="http://github.com/rubyworks/brite/tree/master/site">github.com/rubyworks/brite/tree/master/site</a>/
+</p>
 </li>
-<li><a
-href="http://github.com/proutils/brite/tree/master/plug/sow/seeds/brite/template">github.com/proutils/brite/tree/master/plug/sow/seeds/brite/template</a>/
-
+<li><p>
+<a
+href="https://github.com/rubyworks/brite/tree/master/lib/plugins/sow/brite">github.com/rubyworks/brite/tree/master/lib/plugins/sow/brite</a>/
+</p>
 </li>
 </ul>
 <p>
-To make it even easier you can install Sow (<a
-href="http://proutils.github.com/sow">proutils.github.com/sow</a>) and then
-use:
+To make it even easier you can install <a
+href="http://rubyworks.github.com/sow">Sow</a> and then use:
 </p>
 <pre>
   $ sow brite &lt;site-dir&gt;
@@ -112,10 +110,8 @@ In either case you will see somthing along the lines of these files:
 <pre>
   2010/01/sample.post
   assets/images/logo.jpg
-  assets/styles/class.css
-  assets/styles/id.css
+  assets/styles/custom.css
   assets/styles/reset.css
-  assets/styles/tag.css
   page.layout
   post.layout
   index.page
@@ -139,10 +135,22 @@ And all things are made bright :)
 </p>
 <h1>Copyright &amp; License</h1>
 <p>
-Brite is Copyright &#169; 2009 Thomas Sawyer
+Copyright &#169; 2010 Thomas Sawyer
 </p>
 <p>
-It is distributed under the terms of the GPL license.
+Licensed under the Apache License, Version 2.0 (the &#8220;License&#8221;);
+you may not use this file except in compliance with the License. You may
+obtain a copy of the License at
+</p>
+<pre>
+   http://www.apache.org/licenses/LICENSE-2.0
+</pre>
+<p>
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &#8220;AS IS&#8221;
+BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing permissions
+and limitations under the License.
 </p>
 
   </div>
@@ -175,21 +183,9 @@ It is distributed under the terms of the GPL license.
 
   <br/><br/>
 
-  Copyright (c) 2005-2008 Thomas Sawyer <br/><br/>
-
-  Brite & ProUtils were created by Thomas Sawyer (7rans).<br/>
-
-  Brite is released under the terms of the GPLv3 license.<br/>
-
-  <br/><br/>
-
-  THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
-  IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-  PURPOSE.
+  Copyright (c) 2010 Thomas Sawyer <br/>
 </div>
 </div>
 
 </body>
 </html>
-
