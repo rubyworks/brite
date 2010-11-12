@@ -19,13 +19,13 @@ module Brite
     # Array of layouts.
     attr :layouts
 
-    # Array of ordinary pages.
+    # Array of pages.
     attr :pages
 
     # Array of  posts.
     attr :posts
 
-    # If +true+ dont' actuall write files to disk.
+    # If +true+ dont' actually write files to disk.
     attr :dryrun
 
     # Trace execution, providing details on $stderr, about what is
@@ -35,6 +35,7 @@ module Brite
     def initialize(options={})
       @location = options[:location] || Dir.pwd
       @output   = options[:output]   || Dir.pwd
+      @url      = options[:url]
       @dryrun   = options[:dryrun]
       @trace    = options[:trace]
 
@@ -132,21 +133,21 @@ module Brite
 
     # Access to configuration file data.
     def config
-      @config ||= Config.new
+      @config ||= Config.new(location)
     end
 
     # URL of site as set in configuration file.
     def url
-      config.url
+      @url ||= config.url
     end
 
-    # Returns and instance of Gem::Do::Project.
-    #--
-    # TODO: incorporate location
-    #++
-    def project
-      @project ||= Gemdo::Project.new
-    end
+    ## Returns and instance of Gem::Do::Project.
+    ##--
+    ## TODO: incorporate location
+    ##++
+    #def project
+    #  @project ||= Gemdo::Project.new
+    #end
 
     #
     def defaults
