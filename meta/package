@@ -1,8 +1,0 @@
----
-name    : brite
-date    : 2010-11-12
-version : 0.6.0
-
-requires:
-  - neapolitan 0.3.0+
-

@@ -1,19 +1,19 @@
-#!mast bin lib meta test [A-Z]*
+#!mast -x Syckfile .ruby bin lib meta test [A-Z]*
+.ruby
 bin/brite
 bin/brite-server
 lib/brite/command.rb
 lib/brite/config.rb
 lib/brite/controller.rb
 lib/brite/layout.rb
-lib/brite/meta/data.rb
-lib/brite/meta/package
-lib/brite/meta/profile
 lib/brite/models/model.rb
 lib/brite/models/page.rb
 lib/brite/models/post.rb
 lib/brite/models/site.rb
 lib/brite/rackup.rb
 lib/brite/server.rb
+lib/brite/version.rb
+lib/brite/version.yml
 lib/brite.rb
 lib/plugins/sow/brite/awesome/Sowfile
 lib/plugins/sow/brite/awesome/about.page
@@ -47,10 +47,8 @@ lib/plugins/sow/brite/blog1/brite.yml
 lib/plugins/sow/brite/blog1/index.page
 lib/plugins/sow/brite/blog1/page.layout
 lib/plugins/sow/brite/blog1/post.layout
-meta/data.rb
-meta/package
-meta/profile
 HISTORY.rdoc
+PROFILE
 LICENSE
 README.rdoc
-Syckfile
+VERSION

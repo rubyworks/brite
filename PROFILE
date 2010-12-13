@@ -8,6 +8,9 @@ suite    : proutils
 contact  : http://googlegroups.com/group/proutils
 authors  : Thomas Sawyer
 
+requires:
+  - neapolitan 0.3.0+
+
 description:
   Brite is a remarkably easy to use, light-weight website
   generator. It supports a variety of backend rendering engines
