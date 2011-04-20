@@ -4,8 +4,8 @@ subtitle : Light Up Your Site
 summary  : Super Simple Static Site Generation
 copyright: Copyright (c) 2006,2009 Thomas Sawyer
 license  : Apache v2.0
-suite    : proutils
-contact  : http://googlegroups.com/group/proutils
+company  : RubyWorks
+contact  : trans <transfire@gmail.com>
 authors  : Thomas Sawyer
 
 requires:
@@ -18,5 +18,8 @@ description:
   via rdiscount, with others on the way.
 
 resources:
-  homepage: http://proutils.github.com/brite
-  repository: git://github.com/proutils/brite.git
+  home: http://rubyworks.github.com/brite
+  code: http://rubyworks.github.com/brite
+
+repositories:
+  public: git://github.com/rubyworks/brite.git
