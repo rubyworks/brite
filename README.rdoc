@@ -2,9 +2,6 @@
 
 A Shiny Static Website Generator
 
-* home: http://proutils.github.com/brite
-* code: http://github.com/proutils/brite
-
 
 == DESCRIPTION
 
@@ -14,9 +11,17 @@ which is as easy to use as it is versitle.
 
 == FEATURES
 
+* Site layout is 100% user-defined.
 * Generates files in place (no special subdirectories required).
-* Utilizes multi-format templates via Neapolitan.
-* Supports many markup and templating formats.
+* Supports multi-format templates via Neapolitan.
+* Supports many markup and templating systems.
+
+
+== RESOURCES
+
+* home: http://proutils.github.com/brite
+* code: http://github.com/proutils/brite
+* mail: http://groups.google.com/group/rubyworks-mailinglist
 
 
 == SYNOPSIS
@@ -27,7 +32,7 @@ run:
   $ brite
 
 For details please see the Brite website and the GitHub repository. In
-particular have a look at the `site/` directory which contains Brites
+particular have a look at the `site/` directory which contains Brite's
 own website built on Brite.
 
 

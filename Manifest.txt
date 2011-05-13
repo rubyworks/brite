@@ -1,4 +1,4 @@
-#!mast -x Syckfile .ruby bin lib meta test [A-Z]*
+#!mast .ruby bin lib qed test [A-Z]*.txt [A-Z]*.rdoc
 .ruby
 bin/brite
 bin/brite-server
@@ -13,7 +13,6 @@ lib/brite/models/site.rb
 lib/brite/rackup.rb
 lib/brite/server.rb
 lib/brite/version.rb
-lib/brite/version.yml
 lib/brite.rb
 lib/plugins/sow/brite/awesome/Sowfile
 lib/plugins/sow/brite/awesome/about.page
@@ -47,8 +46,7 @@ lib/plugins/sow/brite/blog1/brite.yml
 lib/plugins/sow/brite/blog1/index.page
 lib/plugins/sow/brite/blog1/page.layout
 lib/plugins/sow/brite/blog1/post.layout
-HISTORY.rdoc
-PROFILE
-LICENSE
+Apache2.txt
 README.rdoc
-VERSION
+History.rdoc
+NOTICE.rdoc
