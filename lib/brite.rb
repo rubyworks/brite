@@ -6,6 +6,6 @@
 #
 module Brite; end
                                
-require 'brite/meta/data'
+require 'brite/version'
 require 'brite/controller'
 require 'brite/command'

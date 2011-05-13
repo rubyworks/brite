@@ -7,6 +7,8 @@ module Brite
 
     # New Page.
     def initialize(settings={}, &rendering)
+#p settings
+#puts
       settings.each do |k,v|
         if respond_to?("#{k}=")
           __send__("#{k}=",v)
@@ -43,6 +45,9 @@ module Brite
     # Tags (labels)
     attr_accessor :tags
 
+    # Is this page a draft? If so it will not be rendered.
+    attr_accessor :draft
+
     #
     def tags=(entry)
       case entry
@@ -61,11 +66,14 @@ module Brite
 
     #
     attr_accessor :url do
-      File.join(site.url, name + extension)
+      #File.join(site.url, name + extension)
+      name + extension
     end
 
     #
-    attr_accessor :layout
+    attr_accessor :layout do
+      'page'
+    end
 
     #
     def output

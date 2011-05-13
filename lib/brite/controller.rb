@@ -37,9 +37,17 @@ module Brite
           when '.layout'
             layouts << Layout.new(self, file)
           when '.page' #*%w{.markdown .rdoc .textile .whtml}
-            @site.pages << initialize_page(file)
+            page = initialize_page(file)
+            if page.draft
+            else
+              @site.pages << page
+            end
           when '.post'
-            @site.posts << initialize_post(file)
+            post = initialize_post(file)
+            if post.draft
+            else
+              @site.posts << post
+            end
           end
         end
       end

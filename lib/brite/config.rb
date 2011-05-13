@@ -10,7 +10,7 @@ module Brite
     CONFIG_FILE = '{.brite,brite.yml,brite.yaml}'
 
     # Default URL, which is just for testing purposes.
-    DEFAULT_URL     = 'http://0.0.0.0:4321'
+    DEFAULT_URL     = 'http://0.0.0.0:3000'
 
     # Default stencil.
     DEFAULT_STENCIL = 'rhtml' #'liquid' # 'rhtml'
@@ -90,13 +90,13 @@ module Brite
     #  )
     #end
 
-    # Use Gemdo.
-    def gemdo=(set)
+    # Use POM.
+    def pom=(set)
       return unless set
-      require 'gemdo'        
+      require 'pom'
       Brite::Context.class_eval do
         def project
-          @project ||= Gemdo::Project.new
+          @project ||= POM::Project.new
         end
       end
     end
