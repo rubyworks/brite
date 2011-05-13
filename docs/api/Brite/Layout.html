@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
   <title>Class: Brite::Layout</title>
 
@@ -39,8 +39,8 @@
       
         <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
       
-      <a href="../index.html">Brite</a>&nbsp;
-      <a href="/">Brite::Layout</a>
+      <a href="../index.html">&quot;Brite&quot;</a>&nbsp;
+      <a href="">Brite::Layout</a>
     </h1>
   </div>
 
@@ -73,7 +73,9 @@
         <h3 class="section-header">Parent</h3>
         <ul>
           
-          <li class="class">Object</li>
+            
+              <li class="class">Object</li>
+            
           
         </ul>
       </div>
@@ -113,11 +115,11 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
-        
-          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -171,7 +173,9 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
       <br/><br/>
     </div>
   </div>
@@ -183,9 +187,8 @@
         <h1>Layout</h1>
       
 
-      <p>
-<a href="Layout.html">Layout</a> class
-</p>
+      
+<p><a href="Layout.html">Layout</a> class</p>
 
     </div>
 
@@ -287,13 +290,13 @@
           <div class="method-source-code"
             id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/layout.rb, line 7</span>
- 7:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">controller</span>, <span class="ruby-identifier">file</span>)
- 8:       <span class="ruby-ivar">@controller</span> = <span class="ruby-identifier">controller</span>
- 9:       <span class="ruby-ivar">@file</span>       = <span class="ruby-identifier">file</span>
-10:       <span class="ruby-ivar">@name</span>       = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-value str">'.layout'</span>)
-11:       <span class="ruby-ivar">@path</span>       = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">file</span>)
-12:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/layout.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">controller</span>, <span class="ruby-identifier">file</span>)
+  <span class="ruby-ivar">@controller</span> = <span class="ruby-identifier">controller</span>
+  <span class="ruby-ivar">@file</span>       = <span class="ruby-identifier">file</span>
+  <span class="ruby-ivar">@name</span>       = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">'.layout'</span>)
+  <span class="ruby-ivar">@path</span>       = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">file</span>)
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -321,31 +324,29 @@
 
         <div class="method-description">
           
-          <p>
-TODO: merge in layout header
-</p>
+          <p>TODO: merge in layout header</p>
           
 
           
           <div class="method-source-code"
             id="render-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/layout.rb, line 23</span>
-23:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>, &amp;<span class="ruby-identifier">content</span>)
-24:       <span class="ruby-identifier">template</span> = <span class="ruby-constant">Neapolitan</span>.<span class="ruby-identifier">file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value">:stencil=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">controller</span>.<span class="ruby-identifier">config</span>.<span class="ruby-identifier">stencil</span>)
-25: 
-26:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>, &amp;<span class="ruby-identifier">content</span>).<span class="ruby-identifier">to_s</span>
-27: 
-28:       <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">header</span>[<span class="ruby-value str">'layout'</span>]
-29: 
-30:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span>
-31:         <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">lookup_layout</span>(<span class="ruby-identifier">layout</span>)
-32:         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;No such layout -- #{layout}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">layout</span>
-33:         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>){ <span class="ruby-identifier">result</span> }
-34:       <span class="ruby-keyword kw">end</span>
-35: 
-36:       <span class="ruby-identifier">result</span>.<span class="ruby-identifier">to_s</span>
-37:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/layout.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>, &amp;<span class="ruby-identifier">content</span>)
+  <span class="ruby-identifier">template</span> = <span class="ruby-constant">Neapolitan</span>.<span class="ruby-identifier">file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value">:stencil=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">controller</span>.<span class="ruby-identifier">config</span>.<span class="ruby-identifier">stencil</span>)
+
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>, &amp;<span class="ruby-identifier">content</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">header</span>[<span class="ruby-string">'layout'</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">layout</span>
+    <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">lookup_layout</span>(<span class="ruby-identifier">layout</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;No such layout -- #{layout}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">layout</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">model</span>){ <span class="ruby-identifier">result</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

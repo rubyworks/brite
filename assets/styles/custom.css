@@ -55,14 +55,19 @@ li p {
 
 #menu {
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
   text-align: center;
+}
+
+#menu .page {
+  border-bottom: 1px solid #ddd;
+  padding: 6px;
 }
 
 /* header */
 
 #header {
-  height: 240px;
+  height: 210px;
   position: relative;
   border-top: 0px solid yellow;
   border-bottom: 0px solid yellow;
@@ -70,9 +75,11 @@ li p {
   /* background: #ff3600; */
   background: #ffffff;
   padding: 0;
+  text-shadow: 2px 2px yellow;
 }
 
 #header .title {
+  font-family: courier;
   padding-top: 10px;
   text-align: left;
 }
@@ -81,7 +88,7 @@ li p {
 
 #footer {
   padding: 20px 0 40px 0;
-  font-size: 8px;
+  font-size: 0.8em;
   font-weight: bold; 
   background: #ff3600;
   color: white;

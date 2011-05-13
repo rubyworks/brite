@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
   <title>Class: Brite::Server</title>
 
@@ -39,8 +39,8 @@
       
         <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
       
-      <a href="../index.html">Brite</a>&nbsp;
-      <a href="/">Brite::Server</a>
+      <a href="../index.html">&quot;Brite&quot;</a>&nbsp;
+      <a href="">Brite::Server</a>
     </h1>
   </div>
 
@@ -73,7 +73,9 @@
         <h3 class="section-header">Parent</h3>
         <ul>
           
-          <li class="class">::Rack::Server</li>
+            
+              <li class="class">Rack::Server</li>
+            
           
         </ul>
       </div>
@@ -157,11 +159,11 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
-        
-          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -215,7 +217,9 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
       <br/><br/>
     </div>
   </div>
@@ -227,13 +231,12 @@
         <h1>Server</h1>
       
 
-      <p>
-<a href="Server.html">Brite::Server</a> is a Rack-based server useful for
-testing sites locally. not all sites &#8212;in fact, most sites, can not be
+      
+<p><a href="Server.html">Brite::Server</a> is a Rack-based server useful for
+testing sites locally. not all sites –in fact, most sites, can not be
 fully previewed via static files. A webserver is required to render and
 navigate a site completely. So this light server is provided to facilitate
-this.
-</p>
+this.</p>
 
     </div>
 
@@ -269,11 +272,11 @@ this.
           <div class="method-source-code"
             id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 55</span>
-55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(*)
-56:       <span class="ruby-keyword kw">super</span>
-57:       <span class="ruby-identifier">set_environment</span>
-58:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*)
+  <span class="ruby-keyword">super</span>
+  <span class="ruby-identifier">set_environment</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -308,24 +311,24 @@ this.
           <div class="method-source-code"
             id="app-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/server.rb, line 117</span>
-117:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">app</span>
-118:       <span class="ruby-ivar">@app</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
-119:         <span class="ruby-identifier">config_file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>]
-120:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">config_file</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">config_file</span>)
-121:           <span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">config_file</span>, <span class="ruby-identifier">opt_parser</span>)
-122:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
-123:           <span class="ruby-identifier">app</span>
-124:         <span class="ruby-keyword kw">else</span>
-125:           <span class="ruby-identifier">root</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">root</span>
-126:           <span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-127:             <span class="ruby-identifier">run</span> <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Directory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{root}&quot;</span>)
-128:           <span class="ruby-keyword kw">end</span>
-129:           <span class="ruby-comment cmt">#self.options.merge!(options)</span>
-130:           <span class="ruby-identifier">app</span>
-131:         <span class="ruby-keyword kw">end</span>
-132:       <span class="ruby-keyword kw">end</span>
-133:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">app</span>
+  <span class="ruby-ivar">@app</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">config_file</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:config</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">config_file</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">config_file</span>)
+      <span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">parse_file</span>(<span class="ruby-identifier">config_file</span>, <span class="ruby-identifier">opt_parser</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">app</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span>
+      <span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">run</span> <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Directory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{root}&quot;</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-comment">#self.options.merge!(options)</span>
+      <span class="ruby-identifier">app</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -334,7 +337,7 @@ this.
       </div>
 
     
-      <div id="default-options-method" class="method-detail ">
+      <div id="default_options-method" class="method-detail ">
         <a name="method-i-default_options"></a>
 
         <div class="method-heading">
@@ -352,19 +355,19 @@ this.
 
           
           <div class="method-source-code"
-            id="default-options-source">
+            id="default_options-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/server.rb, line 101</span>
-101:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_options</span>
-102:       <span class="ruby-keyword kw">super</span>.<span class="ruby-identifier">merge</span>({
-103:         <span class="ruby-value">:Port</span>        =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3000</span>,
-104:         <span class="ruby-value">:environment</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'BRITE_ENV'</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;development&quot;</span>).<span class="ruby-identifier">dup</span>,
-105:         <span class="ruby-value">:daemonize</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
-106:         <span class="ruby-value">:debugger</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
-107:         <span class="ruby-value">:pid</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;.cache/pids/server.pid&quot;</span>,
-108:         <span class="ruby-value">:config</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>
-109:       })
-110:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">default_options</span>
+  <span class="ruby-keyword">super</span>.<span class="ruby-identifier">merge</span>({
+    <span class="ruby-value">:Port</span>        =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3000</span>,
+    <span class="ruby-value">:environment</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-constant">ENV</span>[<span class="ruby-string">'BRITE_ENV'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;development&quot;</span>).<span class="ruby-identifier">dup</span>,
+    <span class="ruby-value">:daemonize</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>,
+    <span class="ruby-value">:debugger</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>,
+    <span class="ruby-value">:pid</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;.cache/pids/server.pid&quot;</span>,
+    <span class="ruby-value">:config</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>
+  })
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -373,7 +376,7 @@ this.
       </div>
 
     
-      <div id="log-path-method" class="method-detail ">
+      <div id="log_path-method" class="method-detail ">
         <a name="method-i-log_path"></a>
 
         <div class="method-heading">
@@ -391,12 +394,12 @@ this.
 
           
           <div class="method-source-code"
-            id="log-path-source">
+            id="log_path-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 97</span>
-97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log_path</span>
-98:       <span class="ruby-value str">&quot;.cache/brite.log&quot;</span>
-99:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">log_path</span>
+  <span class="ruby-string">&quot;.cache/brite.log&quot;</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -425,13 +428,13 @@ this.
           <div class="method-source-code"
             id="middleware-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 90</span>
-90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">middleware</span>
-91:       <span class="ruby-identifier">middlewares</span> = []
-92:       <span class="ruby-comment cmt">#middlewares &lt;&lt; [Rails::Rack::LogTailer, log_path] unless options[:daemonize]</span>
-93:       <span class="ruby-comment cmt">#middlewares &lt;&lt; [Rails::Rack::Debugger]  if options[:debugger]</span>
-94:       <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">middlewares</span>)
-95:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">middleware</span>
+  <span class="ruby-identifier">middlewares</span> = []
+  <span class="ruby-comment">#middlewares &lt;&lt; [Rails::Rack::LogTailer, log_path] unless options[:daemonize]</span>
+  <span class="ruby-comment">#middlewares &lt;&lt; [Rails::Rack::Debugger]  if options[:debugger]</span>
+  <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">middlewares</span>)
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -440,7 +443,7 @@ this.
       </div>
 
     
-      <div id="opt-parser-method" class="method-detail ">
+      <div id="opt_parser-method" class="method-detail ">
         <a name="method-i-opt_parser"></a>
 
         <div class="method-heading">
@@ -458,12 +461,12 @@ this.
 
           
           <div class="method-source-code"
-            id="opt-parser-source">
+            id="opt_parser-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 61</span>
-61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">opt_parser</span>
-62:       <span class="ruby-constant">Options</span>.<span class="ruby-identifier">new</span>
-63:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opt_parser</span>
+  <span class="ruby-constant">Options</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -492,10 +495,10 @@ this.
           <div class="method-source-code"
             id="root-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/server.rb, line 113</span>
-113:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">root</span>
-114:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
-115:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">root</span>
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -504,7 +507,7 @@ this.
       </div>
 
     
-      <div id="set-environment-method" class="method-detail ">
+      <div id="set_environment-method" class="method-detail ">
         <a name="method-i-set_environment"></a>
 
         <div class="method-heading">
@@ -522,12 +525,12 @@ this.
 
           
           <div class="method-source-code"
-            id="set-environment-source">
+            id="set_environment-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 66</span>
-66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_environment</span>
-67:       <span class="ruby-constant">ENV</span>[<span class="ruby-value str">&quot;BRITE_ENV&quot;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:environment</span>]
-68:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_environment</span>
+  <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;BRITE_ENV&quot;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:environment</span>]
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -556,25 +559,25 @@ this.
           <div class="method-source-code"
             id="start-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/server.rb, line 71</span>
-71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>
-72:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;=&gt; Booting #{server}&quot;</span>
-73:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;=&gt; On http://#{options[:Host]}:#{options[:Port]}&quot;</span>
-74:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;=&gt; Call with -d to detach&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
-75:       <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> }
-76:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;=&gt; Ctrl-C to shutdown server&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
-77: 
-78:       <span class="ruby-comment cmt">#Create required tmp directories if not found</span>
-79:       <span class="ruby-node">%(cache pids sessions sockets)</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir_to_make</span><span class="ruby-operator">|</span>
-80:         <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.cache'</span>, <span class="ruby-identifier">dir_to_make</span>))
-81:       <span class="ruby-keyword kw">end</span>
-82: 
-83:       <span class="ruby-keyword kw">super</span>
-84:     <span class="ruby-keyword kw">ensure</span>
-85:       <span class="ruby-comment cmt"># The '-h' option calls exit before @options is set.</span>
-86:       <span class="ruby-comment cmt"># If we call 'options' with it unset, we get double help banners.</span>
-87:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">'Exiting'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
-88:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/server.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;=&gt; Booting #{server}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;=&gt; On http://#{options[:Host]}:#{options[:Port]}&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;=&gt; Call with -d to detach&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
+  <span class="ruby-identifier">trap</span>(<span class="ruby-value">:INT</span>) { <span class="ruby-identifier">exit</span> }
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;=&gt; Ctrl-C to shutdown server&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
+
+  <span class="ruby-comment">#Create required tmp directories if not found</span>
+  <span class="ruby-node">%(cache pids sessions sockets)</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir_to_make</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'.cache'</span>, <span class="ruby-identifier">dir_to_make</span>))
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">ensure</span>
+  <span class="ruby-comment"># The '-h' option calls exit before @options is set.</span>
+  <span class="ruby-comment"># If we call 'options' with it unset, we get double help banners.</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">'Exiting'</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:daemonize</span>]
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

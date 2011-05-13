@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
   <title>Class: Brite::Page</title>
 
@@ -39,8 +39,8 @@
       
         <img src="../assets/icon/class.png" align="absmiddle">&nbsp;
       
-      <a href="../index.html">Brite</a>&nbsp;
-      <a href="/">Brite::Page</a>
+      <a href="../index.html">&quot;Brite&quot;</a>&nbsp;
+      <a href="">Brite::Page</a>
     </h1>
   </div>
 
@@ -73,8 +73,10 @@
         <h3 class="section-header">Parent</h3>
         <ul>
           
-          <!-- why was this class="link" ? -->
-          <li class="class"><a href="Model.html">Brite::Model</a></li>
+            
+              <!-- why was this class="link" ? -->
+              <li class="class"><a href="Model.html">Brite::Model</a></li>
+            
           
         </ul>
       </div>
@@ -96,17 +98,12 @@
           
             
             <li class="method">
-              <a href="#method-i-date_from_filename">#date_from_filename</a>
-            </li>
-          
-            
-            <li class="method">
               <a href="#method-i-extension">#extension</a>
             </li>
           
             
             <li class="method">
-              <a href="#method-i-extension%3D">#extension=</a>
+              <a href="#method-i-extension-3D">#extension=</a>
             </li>
           
             
@@ -121,12 +118,7 @@
           
             
             <li class="method">
-              <a href="#method-i-output%3D">#output=</a>
-            </li>
-          
-            
-            <li class="method">
-              <a href="#method-i-tags%3D">#tags=</a>
+              <a href="#method-i-output-3D">#output=</a>
             </li>
           
             
@@ -149,11 +141,11 @@
         <h3 class="section-header">Information</h3>
         <ul>
         
-          <li class="file"><a href="../HISTORY_rdoc.html">HISTORY.rdoc</a></li>
-        
-          <li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+          <li class="file"><a href="../History_rdoc.html">History.rdoc</a></li>
         
           <li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../NOTICE_rdoc.html">NOTICE.rdoc</a></li>
         
         </ul>
       </div>
@@ -207,7 +199,9 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Redfish</a> 1.4.0
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle</a>
+                     <a href="http://rubyworks.github.com/redfish">RedFish</a>
+                     v1.0.1
       <br/><br/>
     </div>
   </div>
@@ -260,9 +254,7 @@
 
         <div class="method-description">
         
-        <p>
-Instance of <a href="Site.html">Site</a> class to which this page belongs.
-</p>
+        <p>Instance of <a href="Site.html">Site</a> class to which this page belongs.</p>
         
         </div>
       </div>
@@ -279,9 +271,7 @@ Instance of <a href="Site.html">Site</a> class to which this page belongs.
 
         <div class="method-description">
         
-        <p>
-Author
-</p>
+        <p>Author</p>
         
         </div>
       </div>
@@ -298,9 +288,7 @@ Author
 
         <div class="method-description">
         
-        <p>
-Title of page/post
-</p>
+        <p>Title of page/post</p>
         
         </div>
       </div>
@@ -317,9 +305,7 @@ Title of page/post
 
         <div class="method-description">
         
-        <p>
-Publish date
-</p>
+        <p>Publish date</p>
         
         </div>
       </div>
@@ -336,9 +322,7 @@ Publish date
 
         <div class="method-description">
         
-        <p>
-Category (&#8220;a glorified tag&#8221;)
-</p>
+        <p>Category (“a glorified tag”)</p>
         
         </div>
       </div>
@@ -355,9 +339,24 @@ Category (&#8220;a glorified tag&#8221;)
 
         <div class="method-description">
         
-        <p>
-Tags (labels)
-</p>
+        <p>Tags (labels)</p>
+        
+        </div>
+      </div>
+      
+      <div id="draft-attribute-method" class="method-detail">
+        <a name="draft"></a>
+        
+        <a name="draft="></a>
+        
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">draft</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Is this page a draft? If so it will not be rendered.</p>
         
         </div>
       </div>
@@ -425,10 +424,8 @@ Tags (labels)
 
         <div class="method-description">
         
-        <p>
-DEPRECATE: Get rid of this and use rack to test page instead of files.
-OTOH, that may not alwasy be possible we may need to keep this.
-</p>
+        <p>DEPRECATE: Get rid of this and use rack to test page instead of files.
+OTOH, that may not alwasy be possible we may need to keep this.</p>
         
         </div>
       </div>
@@ -445,9 +442,7 @@ OTOH, that may not alwasy be possible we may need to keep this.
 
         <div class="method-description">
         
-        <p>
-Working directory of file being rendering. (Why a field?)
-</p>
+        <p>Working directory of file being rendering. (Why a field?)</p>
         
         </div>
       </div>
@@ -464,9 +459,7 @@ Working directory of file being rendering. (Why a field?)
 
         <div class="method-description">
         
-        <p>
-Summary is the rendering of the first part.
-</p>
+        <p>Summary is the rendering of the first part.</p>
         
         </div>
       </div>
@@ -493,27 +486,27 @@ Summary is the rendering of the first part.
 
         <div class="method-description">
           
-          <p>
-New <a href="Page.html">Page</a>.
-</p>
+          <p>New <a href="Page.html">Page</a>.</p>
           
 
           
           <div class="method-source-code"
             id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 9</span>
- 9:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">settings</span>={}, &amp;<span class="ruby-identifier">rendering</span>)
-10:       <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-11:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>)
-12:           <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>,<span class="ruby-identifier">v</span>)
-13:         <span class="ruby-keyword kw">else</span>
-14:           <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
-15:         <span class="ruby-keyword kw">end</span>
-16:       <span class="ruby-keyword kw">end</span>
-17: 
-18:       <span class="ruby-ivar">@rendering</span> = <span class="ruby-identifier">rendering</span>
-19:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 9</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">settings</span>={}, &amp;<span class="ruby-identifier">rendering</span>)
+<span class="ruby-comment">#p settings</span>
+<span class="ruby-comment">#puts</span>
+      <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>)
+          <span class="ruby-identifier">__send__</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>,<span class="ruby-identifier">v</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-ivar">@rendering</span> = <span class="ruby-identifier">rendering</span>
+    <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -541,19 +534,17 @@ New <a href="Page.html">Page</a>.
 
         <div class="method-description">
           
-          <p>
-Output extension (defualt is &#8216;html&#8217;)
-</p>
+          <p>Output extension (defualt is ‘html’)</p>
           
 
           
           <div class="method-source-code"
             id="extension-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 111</span>
-111:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
-112:       <span class="ruby-ivar">@extension</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'.html'</span>
-113:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension</span>
+  <span class="ruby-ivar">@extension</span> <span class="ruby-operator">||=</span> <span class="ruby-string">'.html'</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -562,8 +553,8 @@ Output extension (defualt is &#8216;html&#8217;)
       </div>
 
     
-      <div id="extension--method" class="method-detail ">
-        <a name="method-i-extension%3D"></a>
+      <div id="extension-3D-method" class="method-detail ">
+        <a name="method-i-extension-3D"></a>
 
         <div class="method-heading">
         
@@ -575,23 +566,21 @@ Output extension (defualt is &#8216;html&#8217;)
 
         <div class="method-description">
           
-          <p>
-Set output extension.
-</p>
+          <p>Set output extension.</p>
           
 
           
           <div class="method-source-code"
-            id="extension--source">
+            id="extension-3D-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 116</span>
-116:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension=</span>(<span class="ruby-identifier">extname</span>)
-117:       <span class="ruby-ivar">@extension</span> = (
-118:         <span class="ruby-identifier">e</span> = (<span class="ruby-identifier">extname</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'html'</span>).<span class="ruby-identifier">to_s</span>
-119:         <span class="ruby-identifier">e</span> = <span class="ruby-value str">'.'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-value str">'.'</span>)
-120:         <span class="ruby-identifier">e</span>
-121:       )
-122:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension=</span>(<span class="ruby-identifier">extname</span>)
+  <span class="ruby-ivar">@extension</span> = (
+    <span class="ruby-identifier">e</span> = (<span class="ruby-identifier">extname</span> <span class="ruby-operator">||</span> <span class="ruby-string">'html'</span>).<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">e</span> = <span class="ruby-string">'.'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'.'</span>)
+    <span class="ruby-identifier">e</span>
+  )
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -620,10 +609,10 @@ Set output extension.
           <div class="method-source-code"
             id="name-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 82</span>
-82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name</span>
-83:       <span class="ruby-ivar">@name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file</span>))
-84:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-ivar">@name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file</span>))
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -652,10 +641,10 @@ Set output extension.
           <div class="method-source-code"
             id="output-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 71</span>
-71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output</span>
-72:       <span class="ruby-ivar">@output</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file</span>)) <span class="ruby-operator">+</span> <span class="ruby-identifier">extension</span>
-73:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">output</span>
+  <span class="ruby-ivar">@output</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">file</span>)) <span class="ruby-operator">+</span> <span class="ruby-identifier">extension</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -664,8 +653,8 @@ Set output extension.
       </div>
 
     
-      <div id="output--method" class="method-detail ">
-        <a name="method-i-output%3D"></a>
+      <div id="output-3D-method" class="method-detail ">
+        <a name="method-i-output-3D"></a>
 
         <div class="method-heading">
         
@@ -682,13 +671,13 @@ Set output extension.
 
           
           <div class="method-source-code"
-            id="output--source">
+            id="output-3D-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 76</span>
-76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output=</span>(<span class="ruby-identifier">fname</span>)
-77:       <span class="ruby-ivar">@output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file</span>), <span class="ruby-identifier">fname</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fname</span>
-78:       <span class="ruby-ivar">@output</span>
-79:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">output=</span>(<span class="ruby-identifier">fname</span>)
+  <span class="ruby-ivar">@output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file</span>), <span class="ruby-identifier">fname</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">fname</span>
+  <span class="ruby-ivar">@output</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -697,50 +686,7 @@ Set output extension.
       </div>
 
     
-      <div id="tags--method" class="method-detail ">
-        <a name="method-i-tags%3D"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">tags=</span><span
-            class="method-args">(entry)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="tags--source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 47</span>
-47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tags=</span>(<span class="ruby-identifier">entry</span>)
-48:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">entry</span>
-49:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>, <span class="ruby-constant">Symbol</span>
-50:         <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>
-51:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp re">/[,;]/</span>)
-52:           <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[,;]/</span>)
-53:         <span class="ruby-keyword kw">else</span>
-54:           <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s+/</span>)
-55:         <span class="ruby-keyword kw">end</span>
-56:       <span class="ruby-keyword kw">else</span>
-57:         <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">flatten</span>
-58:       <span class="ruby-keyword kw">end</span>
-59:       <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">strip</span> }
-60:     <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-      <div id="to-s-method" class="method-detail ">
+      <div id="to_s-method" class="method-detail ">
         <a name="method-i-to_s"></a>
 
         <div class="method-heading">
@@ -753,61 +699,17 @@ Set output extension.
 
         <div class="method-description">
           
-          <p>
-Renders page template.
-</p>
+          <p>Renders page template.</p>
           
 
           
           <div class="method-source-code"
-            id="to-s-source">
+            id="to_s-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 125</span>
-125:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-126:       <span class="ruby-ivar">@rendering</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>)
-127:     <span class="ruby-keyword kw">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-      </div>
-
-    
-    </div>
-  
-    <div id="private-instance-method-details" class="method-section section">
-      <h3 class="section-header">Private Instance Methods</h3>
-
-    
-      <div id="date-from-filename-method" class="method-detail ">
-        <a name="method-i-date_from_filename"></a>
-
-        <div class="method-heading">
-        
-          <span class="method-name">date_from_filename</span><span
-            class="method-args">(file)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        
-        </div>
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code"
-            id="date-from-filename-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/brite/models/page.rb, line 132</span>
-132:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">date_from_filename</span>(<span class="ruby-identifier">file</span>)
-133:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = (<span class="ruby-regexp re">/^\d\d\d\d-\d\d-\d\d/</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">file</span>))
-134:         <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>]
-135:       <span class="ruby-keyword kw">else</span>
-136:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">mtime</span>(<span class="ruby-identifier">file</span>)
-137:       <span class="ruby-keyword kw">end</span>
-138:     <span class="ruby-keyword kw">end</span></pre>
+<span class="ruby-comment"># File lib/brite/models/page.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@rendering</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
