@@ -41,6 +41,11 @@ module Brite
       )
     end
 
+    #
+    def inspect
+      "#<Brite::Site @url=#{url.inspect}>"
+    end
+
   end
 
 end
