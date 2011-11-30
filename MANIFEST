@@ -1,4 +1,4 @@
-#!mast .ruby bin lib qed test [A-Z]*.txt [A-Z]*.rdoc
+#!mast .ruby bin demo lib man qed spec test [A-Z]*.*
 .ruby
 bin/brite
 bin/brite-server
@@ -46,7 +46,6 @@ lib/plugins/sow/brite/blog1/brite.yml
 lib/plugins/sow/brite/blog1/index.page
 lib/plugins/sow/brite/blog1/page.layout
 lib/plugins/sow/brite/blog1/post.layout
-Apache2.txt
+HISTORY.rdoc
 README.rdoc
-History.rdoc
-NOTICE.rdoc
+COPYING.rdoc

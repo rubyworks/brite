@@ -1,0 +1,3 @@
+Brite is a remarkably easy to use, light-weight website generator. It supports
+a variety of backend rendering engines including erb, liquid, rdoc, markdown,
+textile and so on.

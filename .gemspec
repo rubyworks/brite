@@ -1,136 +1,187 @@
---- !ruby/object:Gem::Specification 
-name: brite
-version: !ruby/object:Gem::Version 
-  hash: 7
-  prerelease: false
-  segments: 
-  - 0
-  - 6
-  - 0
-  version: 0.6.0
-platform: ruby
-authors: 
-- Thomas Sawyer
-autorequire: 
-bindir: bin
-cert_chain: []
+# encoding: utf-8
 
-date: 2011-05-13 00:00:00 -04:00
-default_executable: 
-dependencies: 
-- !ruby/object:Gem::Dependency 
-  name: neapolitan
-  prerelease: false
-  requirement: &id001 !ruby/object:Gem::Requirement 
-    none: false
-    requirements: 
-    - - ">="
-      - !ruby/object:Gem::Version 
-        hash: 19
-        segments: 
-        - 0
-        - 3
-        - 0
-        version: 0.3.0
-  type: :runtime
-  version_requirements: *id001
-description: Brite is a remarkably easy to use, light-weight website generator. It supports a variety of backend rendering engines including rhtml via eruby, textile via redcloth, markdown via rdiscount, with others on the way.
-email: transfire@gmail.com
-executables: 
-- brite-server
-- brite
-extensions: []
+require 'yaml'
 
-extra_rdoc_files: 
-- README.rdoc
-files: 
-- .ruby
-- bin/brite
-- bin/brite-server
-- lib/brite/command.rb
-- lib/brite/config.rb
-- lib/brite/controller.rb
-- lib/brite/layout.rb
-- lib/brite/models/model.rb
-- lib/brite/models/page.rb
-- lib/brite/models/post.rb
-- lib/brite/models/site.rb
-- lib/brite/rackup.rb
-- lib/brite/server.rb
-- lib/brite/version.rb
-- lib/brite.rb
-- lib/plugins/sow/brite/awesome/Sowfile
-- lib/plugins/sow/brite/awesome/about.page
-- lib/plugins/sow/brite/awesome/assets/custom.less
-- lib/plugins/sow/brite/awesome/assets/fade.png
-- lib/plugins/sow/brite/awesome/assets/highlight.css
-- lib/plugins/sow/brite/awesome/assets/highlight.js
-- lib/plugins/sow/brite/awesome/assets/jquery.js
-- lib/plugins/sow/brite/awesome/assets/jquery.tabs.js
-- lib/plugins/sow/brite/awesome/assets/reset.css
-- lib/plugins/sow/brite/awesome/assets/ruby.png
-- lib/plugins/sow/brite/awesome/brite.yaml
-- lib/plugins/sow/brite/awesome/history.page
-- lib/plugins/sow/brite/awesome/index.page
-- lib/plugins/sow/brite/awesome/legal.page
-- lib/plugins/sow/brite/awesome/logs.page
-- lib/plugins/sow/brite/awesome/page.layout
-- lib/plugins/sow/brite/blog1/.rsync-filter
-- lib/plugins/sow/brite/blog1/2011/01/sample.html
-- lib/plugins/sow/brite/blog1/2011/01/sample.post
-- lib/plugins/sow/brite/blog1/Sowfile
-- lib/plugins/sow/brite/blog1/assets/images/bg.jpg
-- lib/plugins/sow/brite/blog1/assets/images/icon.jpg
-- lib/plugins/sow/brite/blog1/assets/styles/class.css
-- lib/plugins/sow/brite/blog1/assets/styles/id.css
-- lib/plugins/sow/brite/blog1/assets/styles/misc.css
-- lib/plugins/sow/brite/blog1/assets/styles/print.css
-- lib/plugins/sow/brite/blog1/assets/styles/reset.css
-- lib/plugins/sow/brite/blog1/assets/styles/tag.css
-- lib/plugins/sow/brite/blog1/brite.yml
-- lib/plugins/sow/brite/blog1/index.page
-- lib/plugins/sow/brite/blog1/page.layout
-- lib/plugins/sow/brite/blog1/post.layout
-- Apache2.txt
-- README.rdoc
-- History.rdoc
-- NOTICE.rdoc
-has_rdoc: true
-homepage: http://rubyworks.github.com/brite
-licenses: 
-- Apache v2.0
-post_install_message: 
-rdoc_options: 
-- --title
-- Brite API
-- --main
-- README.rdoc
-require_paths: 
-- lib
-required_ruby_version: !ruby/object:Gem::Requirement 
-  none: false
-  requirements: 
-  - - ">="
-    - !ruby/object:Gem::Version 
-      hash: 3
-      segments: 
-      - 0
-      version: "0"
-required_rubygems_version: !ruby/object:Gem::Requirement 
-  none: false
-  requirements: 
-  - - ">="
-    - !ruby/object:Gem::Version 
-      hash: 3
-      segments: 
-      - 0
-      version: "0"
-requirements: []
+module DotRuby
 
-rubyforge_project: brite
-rubygems_version: 1.3.7
-signing_key: 
-specification_version: 3
-summary: Super Simple Static Site Generation
-test_files: []
+  #
+  class GemSpec
 
+    # For which revision of .ruby is this gemspec intended?
+    REVISION = 0 unless defined?(REVISION)
+
+    #
+    PATTERNS = {
+      :bin_files  => 'bin/*',
+      :lib_files  => 'lib/{**/}*.rb',
+      :ext_files  => 'ext/{**/}extconf.rb',
+      :doc_files  => '*.{txt,rdoc,md,markdown,tt,textile}',
+      :test_files => '{test/{**/}*_test.rb,spec/{**/}*_spec.rb}'
+    } unless defined?(PATTERNS)
+
+    #
+    def self.instance
+      new.to_gemspec
+    end
+
+    attr :metadata
+
+    attr :manifest
+
+    #
+    def initialize
+      @metadata = YAML.load_file('.ruby')
+      @manifest = Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
+
+      if @metadata['revision'].to_i != REVISION
+        warn "You have the wrong revision. Trying anyway..."
+      end
+    end
+
+    #
+    def scm
+      @scm ||= \
+        case
+        when File.directory?('.git')
+          :git
+        end
+    end
+
+    #
+    def files
+      @files ||= \
+        #glob_files[patterns[:files]]
+        case
+        when manifest
+          File.readlines(manifest).
+            map{ |line| line.strip }.
+            reject{ |line| line.empty? || line[0,1] == '#' }
+        when scm == :git
+         `git ls-files -z`.split("\0")
+        else
+          Dir.glob('{**/}{.*,*}')  # TODO: be more specific using standard locations ?
+        end.select{ |path| File.file?(path) }
+    end
+
+    #
+    def glob_files(pattern)
+      Dir.glob(pattern).select { |path|
+        File.file?(path) && files.include?(path)
+      }
+    end
+
+    #
+    def patterns
+      PATTERNS
+    end
+
+    #
+    def executables
+      @executables ||= \
+        glob_files(patterns[:bin_files]).map do |path|
+          File.basename(path)
+        end
+    end
+
+    def extensions
+      @extensions ||= \
+        glob_files(patterns[:ext_files]).map do |path|
+          File.basename(path)
+        end
+    end
+
+    #
+    def name
+      metadata['name'] || metadata['title'].downcase.gsub(/\W+/,'_')
+    end
+
+    #
+    def to_gemspec
+      Gem::Specification.new do |gemspec|
+        gemspec.name        = name
+        gemspec.version     = metadata['version']
+        gemspec.summary     = metadata['summary']
+        gemspec.description = metadata['description']
+
+        metadata['authors'].each do |author|
+          gemspec.authors << author['name']
+
+          if author.has_key?('email')
+            if gemspec.email
+              gemspec.email << author['email']
+            else
+              gemspec.email = [author['email']]
+            end
+          end
+        end
+
+        gemspec.licenses = metadata['copyrights'].map{ |c| c['license'] }.compact
+
+        metadata['requirements'].each do |req|
+          name    = req['name']
+          version = req['version']
+          groups  = req['groups'] || []
+
+          case version
+          when /^(.*?)\+$/
+            version = ">= #{$1}"
+          when /^(.*?)\-$/
+            version = "< #{$1}"
+          when /^(.*?)\~$/
+            version = "~> #{$1}"
+          end
+
+          if groups.empty? or groups.include?('runtime')
+            # populate runtime dependencies  
+            if gemspec.respond_to?(:add_runtime_dependency)
+              gemspec.add_runtime_dependency(name,*version)
+            else
+              gemspec.add_dependency(name,*version)
+            end
+          else
+            # populate development dependencies
+            if gemspec.respond_to?(:add_development_dependency)
+              gemspec.add_development_dependency(name,*version)
+            else
+              gemspec.add_dependency(name,*version)
+            end
+          end
+        end
+
+        # convert external dependencies into a requirements
+        if metadata['external_dependencies']
+          ##gemspec.requirements = [] unless metadata['external_dependencies'].empty?
+          metadata['external_dependencies'].each do |req|
+            gemspec.requirements << req.to_s
+          end
+        end
+
+        # determine homepage from resources
+        homepage = metadata['resources'].find{ |key, url| key =~ /^home/ }
+        gemspec.homepage = homepage.last if homepage
+
+        gemspec.require_paths        = metadata['load_path'] || ['lib']
+        gemspec.post_install_message = metadata['install_message']
+
+        # RubyGems specific metadata
+        gemspec.files       = files
+        gemspec.extensions  = extensions
+        gemspec.executables = executables
+
+        if Gem::VERSION < '1.7.'
+          gemspec.default_executable = gemspec.executables.first
+        end
+
+        gemspec.test_files = glob_files(patterns[:test_files])
+
+        unless gemspec.files.include?('.document')
+          gemspec.extra_rdoc_files = glob_files(patterns[:doc_files])
+        end
+      end
+    end
+
+  end #class GemSpec
+
+end
+
+DotRuby::GemSpec.instance
