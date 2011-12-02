@@ -105,7 +105,7 @@ module Brite
         :daemonize   => false,
         :debugger    => false,
         :pid         => ".cache/pids/server.pid",
-        :config      => nil
+        :config_file => nil
       })
     end
 
@@ -116,7 +116,7 @@ module Brite
 
     def app
       @app ||= begin
-        config_file = options[:config]
+        config_file = options[:config_file]
         if config_file && ::File.exist?(config_file)
           app, options = Rack::Builder.parse_file(config_file, opt_parser)
           self.options.merge!(options)

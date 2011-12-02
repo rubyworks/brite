@@ -14,26 +14,34 @@ module Brite
     end
 
     #
-    def self.attr_accessor(name, &default)
-      name = name.to_sym
-      if default
-        define_method(name) do
-          value = instance_variable_get("@#{name}") || instance_eval(&default)
-          (class << self; self; end).class_eval do
-            define_method(name){ value }
-          end
-          value
+    def initialize(settings={})
+      @settings = settings
+
+      settings.each do |k,v|
+        if respond_to?("#{k}=")
+          __send__("#{k}=",v)
+        #else
+        #  self[k] = v
         end
-      else
-        attr_reader(name)
       end
-      attr_writer(name)
     end
 
-    # Define a singleton method for given key-value pair.
+    #
+    #def data
+    #  @data ||= {}
+    #end
+
+    # Add entry to settings data.
     def []=(k,v)
-      (class << self; self; end).class_eval do
-        define_method(k){v}
+      @settings[k.to_s] = v
+    end
+
+    #
+    def method_missing(name, *a, &b)
+      if @settings.key?(name.to_s)
+        @settings[name.to_s]
+      else
+        nil #super(name, *a, &b)
       end
     end
 
@@ -63,7 +71,7 @@ module Brite
     # Returns an Array of attribute/method names to be visible to the page
     # rendering.
     def rendering_fields
-      list = public_methods 
+      list = public_methods
       list -= Model.public_instance_methods
       list -= omit_fields
       list.select do |name|

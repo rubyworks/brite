@@ -7,46 +7,52 @@ module Brite
 
     # New Page.
     def initialize(settings={}, &rendering)
-#p settings
-#puts
-      settings.each do |k,v|
-        if respond_to?("#{k}=")
-          __send__("#{k}=",v)
-        else
-          self[k] = v
-        end
-      end
+      @site      = settings[:site]
+      @file      = settings[:file]
+
+      initialize_defaults
 
       @rendering = rendering
-    end
 
-    #
-    attr_accessor :file
+      super(settings)
+    end
 
     # Instance of Site class to which this page belongs.
     attr_accessor :site
 
+    #
+    attr_accessor :file
+
     # Author
-    attr_accessor :author do
-      'Anonymous'
-    end
+    attr_accessor :author
 
     # Title of page/post
     attr_accessor :title
 
     # Publish date
-    attr_accessor :date do
-      date_from_filename(file) || Time.now
+    attr_accessor :date
+
+    def date
+      @date ||= date_from_filename(file) || Time.now
     end
 
     # Category ("a glorified tag")
     attr_accessor :category
 
-    # Tags (labels)
-    attr_accessor :tags
-
     # Is this page a draft? If so it will not be rendered.
     attr_accessor :draft
+
+    # Query alias for #draft.
+    alias_method :draft?, :draft
+
+    # Output slug.
+    attr_accessor :slug
+
+    # Layout to use for page.
+    attr_accessor :layout
+
+    # Tags (labels)
+    attr_accessor :tags
 
     #
     def tags=(entry)
@@ -65,26 +71,30 @@ module Brite
     end
 
     #
-    attr_accessor :url do
-      #File.join(site.url, name + extension)
-      name + extension
+    def route
+      @route ||= calculate_route
     end
 
     #
-    attr_accessor :layout do
-      'page'
+    attr_accessor :url
+
+    def url
+      @url ||= \
+        #File.join(site.url, name + extension)
+        name + extension
     end
 
-    #
+    # Save As
     def output
-      @output ||= file.chomp(File.extname(file)) + extension
+      #@output ||= file.chomp(File.extname(file)) + extension
+      @output ||= route + extension
     end
 
     #
-    def output=(fname)
-      @output = File.join(File.dirname(file), fname) if fname
-      @output
-    end
+    #def output=(fname)
+    #  @output = File.join(File.dirname(file), fname) if fname
+    #  @output
+    #end
 
     #
     def name
@@ -97,19 +107,21 @@ module Brite
     #end
 
     #
-    attr_accessor :path do
-      '/' + name + extension
+    def path
+      @path ||= '/' + name + extension
     end
 
-    # DEPRECATE: Get rid of this and use rack to test page instead of files.
-    # OTOH, that may not alwasy be possible we may need to keep this.
-    attr_accessor :root do
-      '../' * file.count('/')
+    # DEPRECATE: Get rid of #root  and use rack to test page instead of files.
+    # OTOH, that may not always be possible we may need to keep this ?
+
+    #
+    def root
+      @root ||= '../' * file.count('/')
     end
 
     # Working directory of file being rendering. (Why a field?)
-    attr_accessor :work do
-      '/' + File.dirname(file)
+    def work
+      @work ||= '/' + File.dirname(file)
     end
 
     # Summary is the rendering of the first part.
@@ -134,7 +146,7 @@ module Brite
       @rendering.call(self)
     end
 
-    private
+   private
 
     #
     def date_from_filename(file)
@@ -143,6 +155,26 @@ module Brite
       else
         File.mtime(file)
       end
+    end
+
+    #
+    def calculate_route
+      path = file.chomp(File.extname(file))
+      name = File.basename(path)
+
+      route = slug.dup
+      route = date.strftime(route) if route.index('%')
+      route = path.sub('$path', path)
+      route = path.sub('$name', name)
+      #route = route + extension
+      route
+    end
+
+    #
+    def initialize_defaults
+      @layout = @site.config.page_layout
+      @slug   = @site.config.page_slug
+      @author = @site.config.author
     end
 
   end
