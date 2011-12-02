@@ -8,7 +8,7 @@ testcase Brite::Page do
 
   method :route do
 
-    test "route is correct" do
+    test "route is calculated correctly" do
       page = @site.pages.first
       page.route.assert == 'example-page'
     end
