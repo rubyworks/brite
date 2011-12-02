@@ -7,16 +7,13 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 
-  <title>Web Write</title>
+  <title>Brite is Web Write</title>
 
   <!-- google verification TODO -->
 
-  <meta name="DESCRIPTION"
-        content="Webrite is a K.I.S.S. website builder."/>
+  <meta name="DESCRIPTION" content="Brite is a K.I.S.S. static website builder."/>
 
   <link rel="icon" href="assets/images/icon.jpg" type="image/x-icon" />
-
-  <link href="atom.xml" rel="alternate" title="blog.webrite.rubyforge.org" type="application/atom+xml" />
 
   <!-- STYLESHEETS -->
 
@@ -32,6 +29,10 @@
 
   <!-- <link href="assets/styles/syntax.css"  rel="stylesheet" type="text/css" /> -->
   <!-- <script src="js/rdocs.js" type="text/javascript"></script> -->
+
+  <style>
+    .blurb { float: left; width: 290px; height: 200px; font-size: 1.5em; margin: 10px; }
+  </style>
 </head>
 
 </body>
@@ -58,108 +59,29 @@
 
 <div id="main">
 <div class="page">
-
   <!-- <div id="drop_shadow"></div> -->
 
   <br style="float: clear;"/>
 
   <div class="content">
-    <h1>The &#8220;Brite&#8221; Idea</h1>
-<p>
-Brite is a static website/blog generator. It is very easy to use, yet
-versitle. It&#8217;s design is both innovative and wisly borrows
-best-of-breed ideas from similar projects.
-</p>
-<h1>Overview</h1>
-<p>
-You will likely want to install Brite via RubyGems.
-</p>
-<pre>
-  $ gem install brite
-</pre>
-<p>
-If you&#8217;re old fashion and want to install to a site location, please
-see <a href="http://rubyworks.github.com/setup">Setup.rb</a>.
-</p>
-<p>
-A good way to get started is to look at the files for this website or at
-the Sow template for a brite project.
-</p>
-<ul>
-<li><p>
-<a
-href="http://github.com/rubyworks/brite/tree/master/site">github.com/rubyworks/brite/tree/master/site</a>/
-</p>
-</li>
-<li><p>
-<a
-href="https://github.com/rubyworks/brite/tree/master/lib/plugins/sow/brite">github.com/rubyworks/brite/tree/master/lib/plugins/sow/brite</a>/
-</p>
-</li>
-</ul>
-<p>
-To make it even easier you can install <a
-href="http://rubyworks.github.com/sow">Sow</a> and then use:
-</p>
-<pre>
-  $ sow brite &lt;site-dir&gt;
-</pre>
-<p>
-In either case you will see somthing along the lines of these files:
-</p>
-<pre>
-  2010/01/sample.post
-  assets/images/logo.jpg
-  assets/styles/custom.css
-  assets/styles/reset.css
-  page.layout
-  post.layout
-  index.page
-</pre>
-<p>
-Look them over carefully, and I think you will quickly see how the system
-works. Try editing your copy of the files. Then, when you are ready, from
-the toplevel of the directory, type:
-</p>
-<pre>
-  $ brite
-</pre>
-<p>
-Brite will list the files generated. Now you can fire up you browser:
-</p>
-<pre>
-  $ firefox index.html
-</pre>
-<p>
-And all things are made bright :)
-</p>
-<h1>Copyright &amp; License</h1>
-<p>
-Copyright &#169; 2010 Thomas Sawyer
-</p>
-<p>
-Licensed under the Apache License, Version 2.0 (the &#8220;License&#8221;);
-you may not use this file except in compliance with the License. You may
-obtain a copy of the License at
-</p>
-<pre>
-   http://www.apache.org/licenses/LICENSE-2.0
-</pre>
-<p>
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an &#8220;AS IS&#8221;
-BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-implied. See the License for the specific language governing permissions
-and limitations under the License.
-</p>
+    <p>The &#8220;Brite&#8221; Idea is a static website/blog generator.
+    It is both easy to use and yet versitle, supporting the following most
+    excellent features:
+    </p>
 
+    <div class="blurb"><h1>Multi-Format Templates</h1>Template can utilize a variety of rendering formats in the same document.</div>
+    <div class="blurb"><h1>In-Document Metadata</h1>YAML front matter can be used as template variables.</div>
+    <div class="blurb"><h1>Shadow File Generation</h1>Templates and the static files generated from them can reside side-by-side.</div>
+    <div class="blurb"><h1>Flexible Stubbing</h1>Or static files can be placed in a location dependent on document properties.</div>
+
+    <div style="clear: both;"><br/></div>
+
+    <p>Getting started is easy. Read this <a href="https://github.com/rubyworks/brite/wiki/Getting-Started">basic tutorial</a>
+    and you'll be on off and running with your own "brite" ideas.</p>
   </div>
 
-  <br style="clear: both;"/><br/><br/>
-
 </div>
 </div>
-
 
 <div id="footer">
 <div class="page-wide">
@@ -179,7 +101,7 @@ and limitations under the License.
 
   <br/><br/><br/>
 
-  Copyright (c) 2010 Thomas Sawyer <br/>
+  Copyright (c) 2010 <a href="http://rubyworks.github.com">Rubyworks</a>. All rights reserved.<br/>
 </div>
 </div>
 
