@@ -1,6 +1,8 @@
-ri
+.reap/digest
+.yardoc
+doc
 log
 pkg
 tmp
-site/docs
+web
 work/sandbox
