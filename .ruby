@@ -12,6 +12,22 @@ alternatives: []
 requirements:
 - name: neapolitan
   version: 0.4.0+
+- name: detroit
+  groups:
+  - build
+  development: true
+- name: reap
+  groups:
+  - build
+  development: true
+- name: lemon
+  groups:
+  - test
+  development: true
+- name: ae
+  groups:
+  - test
+  development: true
 dependencies: []
 conflicts: []
 repositories:
@@ -29,6 +45,7 @@ load_path:
 revision: 0
 summary: Super Simple Static Site Generation
 title: Brite
+version: 0.6.0
 name: brite
 description: ! 'Brite is a remarkably easy to use, light-weight website generator.
   It supports
@@ -37,5 +54,4 @@ description: ! 'Brite is a remarkably easy to use, light-weight website generato
 
   textile and so on.'
 organization: RubyWorks
-version: ''
-date: '2011-11-30'
+date: '2011-12-02'
