@@ -20,16 +20,16 @@ module Brite
     # Instance of Site class to which this page belongs.
     attr_accessor :site
 
-    #
+    # The `.page` file.
     attr_accessor :file
 
-    # Author
+    # Author of page.
     attr_accessor :author
 
-    # Title of page/post
+    # Title of page/post.
     attr_accessor :title
 
-    # Publish date
+    # Publish date.
     attr_accessor :date
 
     def date
