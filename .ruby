@@ -45,7 +45,7 @@ load_path:
 revision: 0
 summary: Super Simple Static Site Generation
 title: Brite
-version: 0.6.0
+version: 0.7.0
 name: brite
 description: ! 'Brite is a remarkably easy to use, light-weight website generator.
   It supports
