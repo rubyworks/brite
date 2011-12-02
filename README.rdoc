@@ -2,6 +2,14 @@
 
 A Shiny Static Website Generator
 
+{Homepage}[http://rubyworks.github.com/brite] /
+{Documentation}[http://rubydoc.info/gems/brite/frames] /
+{Report Issue}[http://github.com/rubyworks/brite/issues] /
+{Development}[http://github.com/rubyworks/brite] /
+{Mailing List}[http://groups.google.com/group/rubyworks-mailinglist]
+
+{<img src="http://travis-ci.org/rubyworks/brite.png" />}[http://travis-ci.org/rubyworks/brite]
+
 
 == DESCRIPTION
 
@@ -12,16 +20,10 @@ which is as easy to use as it is versitle.
 == FEATURES
 
 * Site layout is 100% user-defined.
-* Generates files in place (no special subdirectories required).
+* Can generates files in place, no special subdirectories required.
+* Or utilize flexible routes via templated slugs.
 * Supports multi-format templates via Neapolitan.
-* Supports many markup and templating systems.
-
-
-== RESOURCES
-
-* home: http://proutils.github.com/brite
-* code: http://github.com/proutils/brite
-* mail: http://groups.google.com/group/rubyworks-mailinglist
+* Which supports many markup and templating formats via Malt or Tilt.
 
 
 == SYNOPSIS
@@ -40,27 +42,18 @@ own website built on Brite.
 
 === RubyGems
 
-  $ sudo gem install brite
+  $ gem install brite
 
 === Setup.rb
 
-If you're old fashion and want to install to a site
-location, see Setup.rb[http://rubyworks.github.com/setup].
+If you're old fashion and want to install to a site location,
+see Setup.rb[http://rubyworks.github.com/setup].
 
 
-== COPYRIGHT/LICENSE
+== COPYRIGHTS
 
-Copyright (c) 2009 Thomas Sawyer
+Copyright (c) 2009 Rubyworks
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Brite is distributable in accordance to the BSD-2-Clause license.
 
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
+See COPYING.rdoc file for details.
