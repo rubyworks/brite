@@ -2,7 +2,7 @@ require 'brite/models/model'
 
 module Brite
 
-  #
+  # Models a site page.
   class Page < Model
 
     # New Page.
@@ -46,7 +46,7 @@ module Brite
     alias_method :draft?, :draft
 
     # Output slug.
-    attr_accessor :slug
+    attr_accessor :slug   
 
     # Layout to use for page.
     attr_accessor :layout
@@ -70,35 +70,33 @@ module Brite
       @tags = entry.map{ |e| e.strip }
     end
 
-    #
+    # The page's route, which is effectively the "Save As" output file.
     def route
       @route ||= calculate_route
     end
 
     #
+    alias_method :output, :route
+
+    # Set route directly, relative to file, overriding any slug.
+    def route=(fname)
+      @route = File.join(File.dirname(file), fname) + extension
+    end
+
+    #
+    alias_method :output=, :route=
+
+    # The `name` is same as `route` but without any file extension.
+    def name
+      @name ||= route.chomp(extension)
+    end
+
+    #
     attr_accessor :url
 
+    #
     def url
-      @url ||= \
-        #File.join(site.url, name + extension)
-        name + extension
-    end
-
-    # Save As
-    def output
-      #@output ||= file.chomp(File.extname(file)) + extension
-      @output ||= route + extension
-    end
-
-    #
-    #def output=(fname)
-    #  @output = File.join(File.dirname(file), fname) if fname
-    #  @output
-    #end
-
-    #
-    def name
-      @name ||= file.chomp(File.extname(file))
+      @url ||= route  #site.url ? File.join(site.url, route) : route
     end
 
     #
@@ -106,33 +104,39 @@ module Brite
     #  output #File.join(root, output)
     #end
 
-    #
+    # TODO: Why is #path prefixed with '/' ?
+
+    # Path is the same as route but prefixed with `/`.
     def path
-      @path ||= '/' + name + extension
+      @path ||= '/' + route
     end
 
-    # DEPRECATE: Get rid of #root  and use rack to test page instead of files.
-    # OTOH, that may not always be possible we may need to keep this ?
+    # TODO: Not sure we should have #work, and why prefixed with '/'?
 
-    #
-    def root
-      @root ||= '../' * file.count('/')
-    end
-
-    # Working directory of file being rendering. (Why a field?)
+    # Working directory of file being rendering.
     def work
       @work ||= '/' + File.dirname(file)
     end
 
-    # Summary is the rendering of the first part.
-    attr_accessor :summary
+    # Relative path difference between the route and the site's root.
+    # The return value is a string of `..` paths, e.g. `"../../"`.
+    #
+    # @return [String] multiples of `../`.
+    def root
+      #@root ||= '../' * file.count('/')
+      @root ||= '../' * (output.count('/') - (output.count('../')*2))
+    end
 
-    # Output extension (defualt is 'html')
+    # Output extension (defualts to 'html').
     def extension
       @extension ||= '.html'
     end
 
     # Set output extension.
+    #
+    # @param [String] extname
+    #   The file extension.
+    #
     def extension=(extname)
       @extension = (
         e = (extname || 'html').to_s
@@ -140,6 +144,11 @@ module Brite
         e
       )
     end
+
+    # TODO: Summary is being set externally, is there a way to fix ?
+
+    # Summary is the rendering of the first part.
+    attr_accessor :summary
 
     # Renders page template.
     def to_s
@@ -166,7 +175,7 @@ module Brite
       route = date.strftime(route) if route.index('%')
       route = path.sub('$path', path)
       route = path.sub('$name', name)
-      #route = route + extension
+      route = route + extension
       route
     end
 
