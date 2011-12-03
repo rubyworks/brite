@@ -54,4 +54,4 @@ description: ! 'Brite is a remarkably easy to use, light-weight website generato
 
   textile and so on.'
 organization: RubyWorks
-date: '2011-12-02'
+date: '2011-12-03'
