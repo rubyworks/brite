@@ -36,13 +36,13 @@ Voila, website made!
 
 Of course, the question really is how does one go about creating `.page`, `.post`
 and `.layout` files and such. For information about that see the
-Brite {website}[https://rubyworks.github.com/brite] and see the
-{Getting Started}[https://github.com/rubyworks/brite/wiki/Getting-Started] tutorial.
+{Brite website}[https://rubyworks.github.com/brite] and see the
+{Getting Started Tutorial}[https://github.com/rubyworks/brite/wiki/Getting-Started].
 Also have a look at the {brite-site repository}[https://github.com/rubyworks/brite-site]
 which contains a generic Brite project anyone can use to start a new Brite "idea".
 
-To get further under the hood see Brite source code in the GitHub hosted
-{repository}[http://github.com/rubyworks/brite]
+To get further under the hood see Brite source code in the
+{GitHub hosted repository}[http://github.com/rubyworks/brite]
 and read the {API documentation}[http://rubydoc.info/gems/brite/frames].
 
 
@@ -62,6 +62,6 @@ see Setup.rb[http://rubyworks.github.com/setup].
 
 Copyright (c) 2009 Rubyworks
 
-Brite is distributable in accordance to the BSD-2-Clause license.
+Brite is distributable in accordance to the *BSD-2-Clause* license.
 
 See COPYING.rdoc file for details.
