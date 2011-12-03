@@ -35,14 +35,15 @@ Very briefly, one creates `.page`, `.post` and `.layout` files and then runs:
 Voila, website made!
 
 Of course, the question really is how does one go about creating `.page`, `.post`
-and `.layout` files and such. For more more information about that see the
-Brite <a href="https://rubyworks.github.com/brite">website</a> and see the
-<a href="https://github.com/rubyworks/brite/wiki/Getting-Started">Getting Started</a>.
-Also have a look at the <a href="https://github.com/rubyworks/brite-site">brite-site repository</a>
+and `.layout` files and such. For information about that see the
+Brite {website}[https://rubyworks.github.com/brite] and see the
+{Getting Started}[https://github.com/rubyworks/brite/wiki/Getting-Started] tutorial.
+Also have a look at the {brite-site repository}[https://github.com/rubyworks/brite-site]
 which contains a generic Brite project anyone can use to start a new Brite "idea".
 
-To get further under the hood see Brite source code in the GitHub hosted <a href="http://github.com/rubyworks/brite">repository</a>
-and read the <a href="http://rubydoc.info/gems/brite/frames">API documentation</a>.
+To get further under the hood see Brite source code in the GitHub hosted
+{repository}[http://github.com/rubyworks/brite]
+and read the {API documentation}[http://rubydoc.info/gems/brite/frames].
 
 
 == HOW TO INSTALL
