@@ -10,7 +10,7 @@ testcase Brite::Page do
 
     test "route is calculated correctly" do
       page = @site.pages.first
-      page.route.assert == 'example-page'
+      page.route.assert == 'example-page.html'
     end
 
   end
