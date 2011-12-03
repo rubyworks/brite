@@ -13,16 +13,23 @@ module Brite
   class Controller
 
     # New Controller.
+    #
+    # @param [Hash] options
+    #   Controller options.
+    #
+    # @option options [String] :location
+    #   Location of brite project.   
+    #
+    # @option options [String] :output
+    #   Redirect all output to this directory.
+    #
     def initialize(options={})
       @location = options[:location] || Dir.pwd
       @output   = options[:output]
-      @url      = options[:url]
-      @dryrun   = options[:dryrun]
-      @trace    = options[:trace]
+      #@dryrun   = options[:dryrun]
+      #@trace    = options[:trace]
 
-      @layouts  = []
-
-      @site = Site.new(location, :url=>@url)
+      @site = Site.new(location, :url=>options[:url])
     end
 
     # Returns an instance of Site.
@@ -35,20 +42,10 @@ module Brite
     # the ouput is the same a location.
     attr :output
 
-    # Is `dryrun` mode on?
-    def dryrun?
-      @dryrun
-    end
-
-    # Is `trace` mode on?
-    def trace?
-      @trace
-    end
-
-    # Returns an Array of Layouts.
-    def layouts
-      @site.layouts
-    end
+    ## Returns an Array of Layouts.
+    #def layouts
+    #  @site.layouts
+    #end
 
     # Access to configuration file data.
     def config
@@ -57,7 +54,17 @@ module Brite
 
     # URL of site as set in initializer or configuration file.
     def url
-      @url ||= site.url
+      site.url
+    end
+
+    # Is `dryrun` mode on? Checks the global variable `$DRYRUN`.
+    def dryrun?
+      $DRYRUN #@dryrun
+    end
+
+    # Is `trace` mode on? Checks global variable `$TRACE`.
+    def trace?
+      $TRACE #@trace
     end
 
     # Build the site.
@@ -82,6 +89,10 @@ module Brite
     end
 
     # Save page/post redering to disk.
+    #
+    # @param [Model] model
+    #   The {Page} or {Post} to save to disk.
+    #
     def save(model)
       file = output ? File.join(output, model.output) : model.output
       text = model.to_s

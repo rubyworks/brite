@@ -19,7 +19,9 @@ module Brite
 
     attr :name
 
-    # TODO: merge in layout header
+    # TODO: merge layout header ?
+
+    # Render layout.
     def render(model, &content)
       template = Neapolitan.file(path, :stencil=>site.config.stencil)
 

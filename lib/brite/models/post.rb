@@ -2,6 +2,9 @@ require 'brite/models/page'
 
 module Brite
 
+  # Models a blog post. A post is essentially  the same as a page,
+  # but carries a relatition with other posts that a page does not.
+  #
   class Post < Page
 
     # This assumes `site.posts` is sorted by date.

@@ -24,19 +24,21 @@ module Brite
     # Default post layout file name (less `.layout` extension).
     DEFAULT_POST_LAYOUT = 'post'
 
-    #
+    # Default page slug (`$path`).
     DEFAULT_PAGE_SLUG   = '$path'
 
-    #
+    # Default post slug (`$path`).
     DEFAULT_POST_SLUG   = '$path'
 
-    #
+    # Default author for pages and posts.
     DEFAULT_AUTHOR      = 'Anonymous'
 
-    # Location of brite files.
+    # Location of brite project files. By necessity the configuration file
+    # will be located in this directory.
     attr :location
 
-    # TODO: Allow +url+ to be set via the command line when generating the site.
+    # Configuration file.
+    attr :file
 
     # Site's absolute URL. Where possible links are relative,
     # but it is not alwasy possible. So a URL should *ALWAYS*
@@ -66,7 +68,8 @@ module Brite
 
     # New instance of Config.
     def initialize(location=nil)
-      @location = location || Dir.pwd
+      @location    = location || Dir.pwd
+      @file        = Dir.glob(File.join(@location, CONFIG_FILE)).first
 
       @url         = DEFAULT_URL
       @stencil     = DEFAULT_STENCIL
@@ -93,30 +96,6 @@ module Brite
       end
     end
 
-    #
-    def file
-      @file ||= Dir[File.join(location, CONFIG_FILE)].first
-    end
-
-    #def initialize_defaults
-    #  if file = Dir['{.,}config/defaults{,.yml,.yaml}'].first
-    #    custom_defaults = YAML.load(File.new(file))
-    #  else
-    #    custom_defaults = {}
-    #  end
-    #  @defaults = OpenStruct.new(DEFAULTS.merge(custom_defaults))
-    #end
-
-    # FIXME: Is this used? What about page vs pagelayout?
-    #def defaults
-    #  @defaults ||= OpenStruct.new(
-    #    :stencil    => stencil,
-    #    :format     => format,
-    #    :pagelayout => page,
-    #    :postlayout => post
-    #  )
-    #end
-
     # Provide access to POM.
     def pom=(set)
       return unless set
@@ -127,6 +106,8 @@ module Brite
         end
       end
     end
+
+    #
     alias_method :gemdo=, :pom=
 
   end

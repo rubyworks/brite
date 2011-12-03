@@ -9,3 +9,4 @@ module Brite; end
 require 'brite/version'
 require 'brite/controller'
 require 'brite/command'
+
