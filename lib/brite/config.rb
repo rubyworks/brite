@@ -33,6 +33,9 @@ module Brite
     # Default author for pages and posts.
     DEFAULT_AUTHOR      = 'Anonymous'
 
+    # Default location of layouts.
+    DEFAULT_LAYOUT_PATH = 'assets/layouts'
+
     # Location of brite project files. By necessity the configuration file
     # will be located in this directory.
     attr :location
@@ -66,6 +69,9 @@ module Brite
     # Default author.
     attr_accessor :author
 
+    # Paths to look for layouts.
+    attr_accessor :layout_path
+
     # New instance of Config.
     def initialize(location=nil)
       @location    = location || Dir.pwd
@@ -83,10 +89,14 @@ module Brite
 
       @author      = DEFAULT_AUTHOR
 
+      @layout_path = DEFAULT_LAYOUT_PATH
+
       configure
     end
 
+    #
     # Load configuration file.
+    #
     def configure
       if file
         data = YAML.load(File.new(file))
@@ -96,7 +106,37 @@ module Brite
       end
     end
 
+    #
+    # Make sure layout_path is a list.
+    #
+    def layout_path=(path)
+      @layout_path = [path].flatten
+    end
+
+    #
+    # Locate a layout looking in layout paths.
+    #
+    def find_layout(name)
+      # look for layout in layout_path lcoations
+      file = nil
+      @layout_path.find do |path|
+        file = Dir.glob(File.join(path, "#{name}.layout")).first
+      end
+      # fallback to site's root location
+      if !file
+        file = Dir.glob(File.join(@location, "#{name}.layout")).first
+      end
+      # if not found raise an error
+      raise "Cannot locate layout #{name}." unless file
+      # return layout file
+      file
+    end
+
+    #
     # Provide access to POM.
+    #
+    # @todo Will become GemDo in future ?
+    #
     def pom=(set)
       return unless set
       require 'pom'
