@@ -1,0 +1,7 @@
+--title "Brite Site"
+--readme README.rdoc
+--protected
+--private
+lib
+-
+[A-Z]*.*
