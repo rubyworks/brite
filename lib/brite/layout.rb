@@ -7,6 +7,7 @@ module Brite
     def initialize(site, file)
       @site = site
       @file = file
+
       @name = file.chomp('.layout')
       @path = File.expand_path(file)
     end
@@ -25,13 +26,18 @@ module Brite
     def render(model, &content)
       template = Neapolitan.file(path, :stencil=>site.config.stencil)
 
+      # update the model's metadata
+      #model.update(template.metadata)
+
       result = template.render(model, &content).to_s
 
-      layout = template.header['layout']
+      layout_name = template.metadata['layout']
 
-      if layout
-        layout = site.lookup_layout(layout)
+      if layout_name
+        layout = site.lookup_layout(layout_name)
+
         raise "No such layout -- #{layout}" unless layout
+
         result = layout.render(model){ result }
       end
 

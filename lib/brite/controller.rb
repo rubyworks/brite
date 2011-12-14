@@ -70,11 +70,12 @@ module Brite
     # Build the site.
     def build
       if trace?
-        puts "Layouts: " + layouts.map{ |layout| layout.name }.join(", ")
+        puts "Layouts: " + site.layouts.map{ |layout| layout.name }.join(", ")
         puts "Pages:   " + site.pages.map{ |page| page.file }.join(", ")
         puts "Posts:   " + site.posts.map{ |post| post.file }.join(", ")
         puts
       end
+
       Dir.chdir(location) do
         site.posts.each do |post|
           puts "Rendering #{post.file}" if $DEBUG

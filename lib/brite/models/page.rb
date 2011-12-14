@@ -6,22 +6,38 @@ module Brite
   class Page < Model
 
     # New Page.
-    def initialize(settings={}, &rendering)
-      @site      = settings[:site]
-      @file      = settings[:file]
+    def initialize(site, file)
+      @site = site
+      @file = file
 
       initialize_defaults
 
-      @rendering = rendering
+      @_template = Neapolitan.file(file, :stencil=>site.config.stencil) #site.page_defaults)
 
-      super(settings)
+      update(@_template.metadata)
+    end
+
+    #
+    def initialize_defaults
+      @tags = []
+      @author = site.config.author
+      @slug   = site.config.page_slug
+      @layout = site.config.page_layout #@site.config.find_layout()
+
+      @extension = '.html'
+
+      @route  = nil
+      @path   = nil
+      @name   = nil
+      @url    = nil
+      @root   = nil
     end
 
     # Instance of Site class to which this page belongs.
-    attr_accessor :site
+    attr_reader :site
 
     # The `.page` file.
-    attr_accessor :file
+    attr_reader :file
 
     # Author of page.
     attr_accessor :author
@@ -124,12 +140,12 @@ module Brite
     # @return [String] multiples of `../`.
     def root
       #@root ||= '../' * file.count('/')
-      @root ||= '../' * (output.count('/') - (output.count('../')*2))
+      @root ||= '../' * (output.count('/') - (output.scan('../').length*2))
     end
 
     # Output extension (defualts to 'html').
     def extension
-      @extension ||= '.html'
+      @extension #||= '.html'
     end
 
     # Set output extension.
@@ -152,7 +168,12 @@ module Brite
 
     # Renders page template.
     def to_s
-      @rendering.call(self)
+      render
+    end
+
+    #
+    def inspect
+      "#<#{self.class} #{@file}>"
     end
 
    private
@@ -179,11 +200,30 @@ module Brite
       route
     end
 
+    # Render page or post.
     #
-    def initialize_defaults
-      @layout = @site.config.page_layout
-      @slug   = @site.config.page_slug
-      @author = @site.config.author
+    # @param [Neapolitan::Template] template
+    #   Template to be rendered.
+    #
+    # @param [Model] model
+    #   Page or Post model to use for rendering.
+    #
+    def render
+      render = @_template.render(self) #, &body)
+
+      self.summary = render.summary  # TODO: make part of neapolitan?
+
+      result = render.to_s
+
+      if layout
+        if layout_object = site.lookup_layout(layout)
+          result = layout_object.render(self){ result }
+        #else
+        #  raise "No such layout -- #{layout}" unless layout
+        end
+      end
+
+      result.to_s.strip
     end
 
   end

@@ -22,6 +22,9 @@ module Brite
       @posts   = []
       @layouts = []
 
+      @tags         = nil
+      @posts_by_tag = nil
+
       load_site
     end
 
@@ -50,7 +53,11 @@ module Brite
 
     # Returns an Array of all tags used in all posts.
     def tags
-      @tags ||= posts.map{ |post| post.tags }.flatten.uniq.sort
+      @tags ||= (
+        list = []
+        posts.each{ |post| list.concat(post.tags) }
+        list.uniq.sort
+      )
     end
 
     # Returns a Hash posts indexed by tag.
@@ -71,7 +78,7 @@ module Brite
       "#<Brite::Site @url=#{url.inspect}>"
     end
 
-   private
+   #private
 
     def load_site
       Dir.chdir(location) do
@@ -105,65 +112,56 @@ module Brite
 
     # Returns an instance of Page.
     def load_page(file)
-      template = Neapolitan.file(file, :stencil=>config.stencil)
-      settings = template.metadata #header
+      Page.new(self, file)
 
-      #settings['layout'] ||= config.page_layout
+      #template = Neapolitan.file(file, :stencil=>config.stencil)
+      #settings = template.metadata #header
 
-      settings[:site] = self
-      settings[:file] = file
+      ##settings['layout'] ||= config.page_layout
 
-      Page.new(settings){ |page| render(template, page) }
+      #settings[:site] = self
+      #settings[:file] = file
+
+      #Page.new(settings){ |page| render(template, page) }
     end
 
     # Returns an instance of Post.
     def load_post(file)
-      template = Neapolitan.file(file, :stencil=>config.stencil)
-      settings = template.header
+      Post.new(self, file)
 
-      #settings['layout'] ||= config.post_layout
+      #template = Neapolitan.file(file, :stencil=>config.stencil)
+      #settings = template.header
 
-      settings[:site] = self
-      settings[:file] = file
+      ##settings['layout'] ||= config.post_layout
 
-      Post.new(settings){ |post| render(template, post) }
+      #settings[:site] = self
+      #settings[:file] = file
+
+      #Post.new(settings){ |post| render(template, post) }
     end
 
-    # Render page or post.
     #
-    # @param [Neapolitan::Template] template
-    #   Template to be rendered.
     #
-    # @param [Model] model
-    #   Page or Post model to use for rendering.
     #
-    def render(template, model) #scope=nil, &body)
-      #if scope
-      #  scope.merge!(attributes)
-      #else
-      #  scope = to_scope
-      #end
+    #def page_defaults
+    #  { :stencil => config.stencil,
+    #    :layout  => config.layout,
+    #    :author  => config.author
+    #  }
+    #end
 
-      render = template.render(model) #, &body)
+  public
 
-      model.summary = render.summary  # TODO: make part of neapolitan?
-
-      result = render.to_s
-
-      if model.layout 
-        if layout = lookup_layout(model.layout)
-          result = layout.render(model){ result }
-        #else
-        #  raise "No such layout -- #{layout}" unless layout
-        end
-      end
-
-      result.to_s.strip
-    end
-
+    #
     # Lookup layout by name.
+    #
     def lookup_layout(name)
-      layouts.find{ |layout| name == layout.name }
+      layout = layouts.find do |layout|
+        config.layout_path.any? { |path|
+          File.join(path, name) == layout.name 
+        } or name == layout.name
+      end
+      layout
     end
 
   end
