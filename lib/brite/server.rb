@@ -20,28 +20,38 @@ module Brite
   #
   class Server 
 
+    # Rack configuration file.
+    RACK_FILE = 'brite.ru'
+
     #
     def self.start(argv)
       new(argv).start
     end
 
-    #
+    # Server options, parsed from command line.
+    attr :options
+
+    # Setup new instance of Brite::Server.
     def initialize(argv)
       @options = ::Rack::Server::Options.new.parse!(argv)
+
+      @root = argv.first || Dir.pwd
 
       @options[:app] = app
       @options[:pid] = "#{tmp_dir}/pids/server.pid"
 
-      @options[:Port] ||= '3000'
+      @options[:Port] ||= '4444'
     end
 
     # THINK: Should we be using a local tmp directory instead?
+    #        Then again, why do we need them at all, really?
 
     # Temporary directory used by the rack server.
     def tmp_dir
       @tmp_dir ||= File.join(Dir.tmpdir, 'brite', root)
     end
 
+    # Start the server.
     def start
       ensure_brite_site
 
@@ -50,46 +60,65 @@ module Brite
         FileUtils.mkdir_p(File.join(tmp_dir, dir_to_make))
       end
 
-      ::Rack::Server.start(@options)
+      ::Rack::Server.start(options)
     end
 
+    # Ensure root is a Brite Site.
     def ensure_brite_site
       return true if File.exist?(rack_file)
       return true if config.file
       abort "Not a brite site."
     end
 
-    #
+    # Load Brite configuration.
     def config
       @config ||= Brite::Config.new(root)
     end
 
-    #
+    # Site root directory.
     def root
-      Dir.pwd
+      @root
     end
 
-    #
+    # Configuration file for server.
     def rack_file
-     'brite.ru'
+      RACK_FILE
     end
 
-    #
+    # If the site has a `brite.ru` file, that will be used to start the server,
+    # otherwise a standard Rack::Directory server ise used.
     def app
       @app ||= (
         if ::File.exist?(rack_file)
           app, options = Rack::Builder.parse_file(rack_file, opt_parser)
-          self.options.merge!(options)
+          @options.merge!(options)
           app
         else
           root = self.root
-          app, options = Rack::Builder.new do
+          Rack::Builder.new do
+            use Index, root
             run Rack::Directory.new("#{root}")
           end
-          #self.options.merge!(options)
-          app
         end
       )
+    end
+
+    # Rack middleware to serve `index.html` file by default.
+    class Index
+      def initialize(app, root)
+        @app  = app
+        @root = root || Dir.pwd
+      end
+
+      def call(env)
+        path = Rack::Utils.unescape(env['PATH_INFO'])
+        index_file = File.join(@root, path, 'index.html')
+        if File.exists?(index_file)
+          [200, {'Content-Type' => 'text/html'}, File.new(index_file)]
+        else
+          @app.call(env) #Rack::Directory.new(@root).call(env)
+        end
+      end
     end
 
     #
