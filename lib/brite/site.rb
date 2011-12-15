@@ -1,9 +1,14 @@
-require 'brite/models/model'
+require 'brite/model'
+#require 'brite/page'
+#require 'brite/post'
+#require 'brite/part'
 
 module Brite
 
+  # TODO: Limit Neapolitan to Markup formats only ?
+
   #
-  class Site < Model
+  class Site #< Model
 
     # New Site model.
     #
@@ -20,6 +25,7 @@ module Brite
 
       @pages   = []
       @posts   = []
+      @parts   = []
       @layouts = []
 
       @tags         = nil
@@ -39,6 +45,9 @@ module Brite
 
     # Returns and Array of Post instances.
     attr :posts
+
+    #
+    attr :parts
 
     #
     attr :layouts
@@ -89,18 +98,14 @@ module Brite
           case ext
           when '.layout'
             layouts << Layout.new(self, file)
+          when '.part'
+            parts << Part.new(self, file)
           when '.page' #*%w{.markdown .rdoc .textile .whtml}
-            page = load_page(file)
-            if page.draft
-            else
-              @pages << page
-            end
+            page = Page.new(self, file)
+            pages << page unless page.draft
           when '.post'
-            post = load_post(file)
-            if post.draft
-            else
-              @posts << post
-            end
+            post = Post.new(self, file)
+            posts << post unless post.draft
           end
         end
       end
@@ -108,40 +113,6 @@ module Brite
       @posts.sort!{ |a,b| b.date <=> a.date }
     end
 
-    # TODO: Limit Neapolitan to Markup formats only ?
-
-    # Returns an instance of Page.
-    def load_page(file)
-      Page.new(self, file)
-
-      #template = Neapolitan.file(file, :stencil=>config.stencil)
-      #settings = template.metadata #header
-
-      ##settings['layout'] ||= config.page_layout
-
-      #settings[:site] = self
-      #settings[:file] = file
-
-      #Page.new(settings){ |page| render(template, page) }
-    end
-
-    # Returns an instance of Post.
-    def load_post(file)
-      Post.new(self, file)
-
-      #template = Neapolitan.file(file, :stencil=>config.stencil)
-      #settings = template.header
-
-      ##settings['layout'] ||= config.post_layout
-
-      #settings[:site] = self
-      #settings[:file] = file
-
-      #Post.new(settings){ |post| render(template, post) }
-    end
-
-    #
-    #
     #
     #def page_defaults
     #  { :stencil => config.stencil,
@@ -156,12 +127,22 @@ module Brite
     # Lookup layout by name.
     #
     def lookup_layout(name)
-      layout = layouts.find do |layout|
+      layouts.find do |layout|
         config.layout_path.any? { |path|
           File.join(path, name) == layout.name 
         } or name == layout.name
       end
-      layout
+    end
+
+    #
+    #
+    #
+    def lookup_partial(name)
+      parts.find do |part|
+        config.partial_path.any? { |path|
+          File.join(path, name) == part.name 
+        } or name == part.name
+      end
     end
 
   end

@@ -1,9 +1,10 @@
 require 'neapolitan'
 require 'brite/config'
 require 'brite/layout'
-require 'brite/models/site'
-require 'brite/models/page'
-require 'brite/models/post'
+require 'brite/site'
+require 'brite/page'
+require 'brite/post'
+require 'brite/part'
 
 module Brite
 
@@ -71,6 +72,7 @@ module Brite
     def build
       if trace?
         puts "Layouts: " + site.layouts.map{ |layout| layout.name }.join(", ")
+        puts "Parts:   " + site.parts.map{ |part| part.name }.join(", ")
         puts "Pages:   " + site.pages.map{ |page| page.file }.join(", ")
         puts "Posts:   " + site.posts.map{ |post| post.file }.join(", ")
         puts

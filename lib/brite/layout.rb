@@ -1,7 +1,9 @@
+require 'brite/model'
+
 module Brite
 
   # Layout class
-  class Layout
+  class Layout < Model
 
     #
     def initialize(site, file)
@@ -12,13 +14,17 @@ module Brite
       @path = File.expand_path(file)
     end
 
+    #
     attr :site
 
+    #
     attr :file
 
-    attr :path
-
+    #
     attr :name
+
+    #
+    attr :path
 
     # TODO: merge layout header ?
 

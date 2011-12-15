@@ -5,8 +5,38 @@ module Brite
   class Model
 
     #
-    def initialize(data={})
+    def initialize(site, file, data={})
+      @site  = site
+      @files = file
+
       update(date)
+    end
+
+    attr_reader :site
+
+    attr_reader :file
+
+    #
+    def config
+      site.config
+    end
+
+    #
+    # Render partial template.
+    #
+    def part(path)
+      @part ||= (
+        partial = site.lookup_partial(path.to_s)
+        #if path
+        #  partial = site.parts.find{ |part|
+        #    part.name == path
+        #  }
+          raise "no such part -- #{path} from #{file}" unless partial
+          partial.render
+        #else
+        #  Part::Manager.new(self)
+        #end
+      )
     end
 
     #
@@ -52,15 +82,7 @@ module Brite
       fields.each do |field|
         hash[field.to_s] = __send__(field)
       end
-      #extra.each do |k,v|
-      #  hash[k.to_s] == v
-      #end
       hash
-    end
-
-    # In case Liquid template is used.
-    def to_liquid
-      to_h
     end
 
     # Returns an Array of attribute/method names to be visible to the page
@@ -83,4 +105,3 @@ module Brite
   end
 
 end
-

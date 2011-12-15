@@ -1,4 +1,4 @@
-require 'brite/models/model'
+require 'brite/model'
 
 module Brite
 
@@ -6,11 +6,13 @@ module Brite
   class Page < Model
 
     # New Page.
-    def initialize(site, file)
+    def initialize(site, file, copy={})
       @site = site
       @file = file
 
       initialize_defaults
+
+      update(copy)
 
       @_template = Neapolitan.file(file, :stencil=>site.config.stencil) #site.page_defaults)
 
@@ -19,14 +21,17 @@ module Brite
 
     #
     def initialize_defaults
-      @tags = []
+      @tags   = []
       @author = site.config.author
-      @slug   = site.config.page_slug
-      @layout = site.config.page_layout #@site.config.find_layout()
+      @route  = site.config.page_route
+      @layout = site.config.page_layout
 
       @extension = '.html'
 
-      @route  = nil
+      # these are filled-out as needed, but the instance variable
+      # must define up front to ensure #to_h will pick them up.
+      # Probably this should be done in a different way in the future.
+      @output = nil
       @path   = nil
       @name   = nil
       @url    = nil
@@ -61,8 +66,8 @@ module Brite
     # Query alias for #draft.
     alias_method :draft?, :draft
 
-    # Output slug.
-    attr_accessor :slug   
+    # Output route.
+    attr_accessor :route
 
     # Layout to use for page.
     attr_accessor :layout
@@ -87,32 +92,33 @@ module Brite
     end
 
     # The page's route, which is effectively the "Save As" output file.
-    def route
-      @route ||= calculate_route
+    def output
+      @output ||= calculate_output
     end
-
-    #
-    alias_method :output, :route
 
     # Set route directly, relative to file, overriding any slug.
-    def route=(fname)
-      @route = File.join(File.dirname(file), fname) + extension
+    def output=(path)
+      @output = path.sub(/^\//,'')
     end
 
-    #
-    alias_method :output=, :route=
+    # Setting the peramlink is the same as setting output.
+    alias_method :permalink=, :output=
 
-    # The `name` is same as `route` but without any file extension.
+    # Same as output but prefixed with `/`.
+    def permalink
+      '/' + output
+    end
+
+    alias_method :url, :permalink
+
+    #
+    #def url
+    #  @url ||= config.url ? File.join(config.url, output) : permalink
+    #end
+
+    # The `name` is same as `output` but without any file extension.
     def name
-      @name ||= route.chomp(extension)
-    end
-
-    #
-    attr_accessor :url
-
-    #
-    def url
-      @url ||= route  #site.url ? File.join(site.url, route) : route
+      @name ||= output.chomp(extension)
     end
 
     #
@@ -120,19 +126,11 @@ module Brite
     #  output #File.join(root, output)
     #end
 
-    # TODO: Why is #path prefixed with '/' ?
-
-    # Path is the same as route but prefixed with `/`.
-    def path
-      @path ||= '/' + route
-    end
-
-    # TODO: Not sure we should have #work, and why prefixed with '/'?
-
+    # THINK: Is there any reason to have #work ?
     # Working directory of file being rendering.
-    def work
-      @work ||= '/' + File.dirname(file)
-    end
+    #def work
+    #  @work ||= '/' + File.dirname(file)
+    #end
 
     # Relative path difference between the route and the site's root.
     # The return value is a string of `..` paths, e.g. `"../../"`.
@@ -188,16 +186,16 @@ module Brite
     end
 
     #
-    def calculate_route
+    def calculate_output
       path = file.chomp(File.extname(file))
       name = File.basename(path)
 
-      route = slug.dup
-      route = date.strftime(route) if route.index('%')
-      route = path.sub('$path', path)
-      route = path.sub('$name', name)
-      route = route + extension
-      route
+      out = route.dup
+      out = date.strftime(out) if out.index('%')
+      out = out.sub(':path', path)
+      out = out.sub(':name', name)
+      out = out + extension
+      out
     end
 
     # Render page or post.

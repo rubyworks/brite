@@ -1,4 +1,4 @@
-require 'brite/models/page'
+require 'brite/page'
 
 module Brite
 
@@ -11,7 +11,7 @@ module Brite
     def initialize_defaults
       super
 
-      @slug   = site.config.post_slug
+      @route  = site.config.post_route
       @layout = site.config.post_layout #@site.config.find_layout(@site.config.post_layout)
 
       @previous_post = nil
@@ -24,7 +24,7 @@ module Brite
     def previous_post
       @previous_post ||= (
         index = site.posts.index(self)
-        index < 0 ? nil : site.posts[index - 1]
+        index == 0 ? nil : site.posts[index - 1]
       )
     end
 

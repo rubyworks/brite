@@ -7,34 +7,37 @@ module Brite
   class Config
 
     # Configuration file name glob.
-    CONFIG_FILE         = '{.brite,brite.yml,brite.yaml}'
+    CONFIG_FILE          = '{.brite,brite.yml,brite.yaml}'
 
     # Default URL, which is just for testing purposes.
-    DEFAULT_URL         = 'http://0.0.0.0:3000'
+    DEFAULT_URL          = 'http://0.0.0.0:3000'
 
     # Default stencil.
-    DEFAULT_STENCIL     = 'rhtml' #'liquid' # 'rhtml'
+    DEFAULT_STENCIL      = 'erb'
 
     # Default format.
-    DEFAULT_FORMAT      = nil #html
+    DEFAULT_FORMAT       = nil #html
 
     # Default page layout file name (less `.layout` extension).
-    DEFAULT_PAGE_LAYOUT = 'page'
+    DEFAULT_PAGE_LAYOUT  = 'page'
 
     # Default post layout file name (less `.layout` extension).
-    DEFAULT_POST_LAYOUT = 'post'
+    DEFAULT_POST_LAYOUT  = 'post'
 
-    # Default page slug (`$path`).
-    DEFAULT_PAGE_SLUG   = '$path'
+    # Default page route (`:path`).
+    DEFAULT_PAGE_ROUTE   = ':path'
 
-    # Default post slug (`$path`).
-    DEFAULT_POST_SLUG   = '$path'
+    # Default post route (`:path`).
+    DEFAULT_POST_ROUTE   = ':path'
 
     # Default author for pages and posts.
-    DEFAULT_AUTHOR      = 'Anonymous'
+    DEFAULT_AUTHOR       = 'Anonymous'
 
     # Default location of layouts.
-    DEFAULT_LAYOUT_PATH = 'assets/layouts'
+    DEFAULT_LAYOUT_PATH  = ['assets/layouts']
+
+    # Default location of partials.
+    DEFAULT_PARTIAL_PATH = ['assets/partials']
 
     # Location of brite project files. By necessity the configuration file
     # will be located in this directory.
@@ -60,11 +63,11 @@ module Brite
     # Default post layout file name (less extension).
     attr_accessor :post_layout
 
-    # Default page slug.
-    attr_accessor :page_slug
+    # Default page route.
+    attr_accessor :page_route
 
-    # Default post slug.
-    attr_accessor :post_slug
+    # Default post route.
+    attr_accessor :post_route
 
     # Default author.
     attr_accessor :author
@@ -72,24 +75,30 @@ module Brite
     # Paths to look for layouts.
     attr_accessor :layout_path
 
+    # Paths to look for layouts.
+    attr_accessor :partial_path
+
     # New instance of Config.
     def initialize(location=nil)
-      @location    = location || Dir.pwd
-      @file        = Dir.glob(File.join(@location, CONFIG_FILE)).first
+      @location     = location || Dir.pwd
+      @file         = Dir.glob(File.join(@location, CONFIG_FILE)).first
 
-      @url         = DEFAULT_URL
-      @stencil     = DEFAULT_STENCIL
-      @format      = DEFAULT_FORMAT
+      @url          = DEFAULT_URL
+      @stencil      = DEFAULT_STENCIL
+      @format       = DEFAULT_FORMAT
 
-      @page_layout = DEFAULT_PAGE_LAYOUT
-      @post_layout = DEFAULT_POST_LAYOUT
+      @page_layout  = DEFAULT_PAGE_LAYOUT
+      @post_layout  = DEFAULT_POST_LAYOUT
 
-      @page_slug   = DEFAULT_PAGE_SLUG
-      @post_slug   = DEFAULT_POST_SLUG
+      @page_route   = DEFAULT_PAGE_ROUTE
+      @post_route   = DEFAULT_POST_ROUTE
 
-      @author      = DEFAULT_AUTHOR
+      @author       = DEFAULT_AUTHOR
 
-      @layout_path = DEFAULT_LAYOUT_PATH
+      @layout_path  = DEFAULT_LAYOUT_PATH
+      @partial_path = DEFAULT_PARTIAL_PATH
+
+      @custom      = {}
 
       configure
     end
@@ -114,10 +123,18 @@ module Brite
     end
 
     #
+    # Make sure partial_path is a list.
+    #
+    def partial_path=(path)
+      @partial_path = [path].flatten
+    end
+
+=begin
+    #
     # Locate a layout looking in layout paths.
     #
     def find_layout(name)
-      # look for layout in layout_path lcoations
+      # look for layout in layout_path locations
       file = nil
       @layout_path.find do |path|
         file = Dir.glob(File.join(path, "#{name}.layout")).first
@@ -131,6 +148,7 @@ module Brite
       # return layout file
       file
     end
+=end
 
     #
     # Provide access to POM.
@@ -149,6 +167,21 @@ module Brite
 
     #
     alias_method :gemdo=, :pom=
+
+    #
+    def method_missing(s, v=nil, *a, &b)
+      s = s.to_s
+      case s
+      when /=$/
+        @custom[s.chomp('=')] = v
+      else
+        if @custom.key?(s)
+          @custom[s]
+        else
+          super(s.to_sym, v, *a, &b)
+        end
+      end
+    end
 
   end
 
