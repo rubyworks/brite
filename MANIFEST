@@ -6,11 +6,12 @@ lib/brite/command.rb
 lib/brite/config.rb
 lib/brite/controller.rb
 lib/brite/layout.rb
-lib/brite/models/model.rb
-lib/brite/models/page.rb
-lib/brite/models/post.rb
-lib/brite/models/site.rb
+lib/brite/model.rb
+lib/brite/page.rb
+lib/brite/part.rb
+lib/brite/post.rb
 lib/brite/server.rb
+lib/brite/site.rb
 lib/brite/version.rb
 lib/brite.rb
 lib/brite.yml

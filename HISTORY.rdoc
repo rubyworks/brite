@@ -1,15 +1,15 @@
 = RELEASE HISTORY
 
 
-== 0.7.0 / 2011-12-02
+== 0.7.0 / 2011-12-15
 
-New release of Brite celans up the code a bit, add templated route support
-via `slug` field, and actually adds a few unit tests (wowzeres, that a good
-thing, right?). 
+New release of Brite cleans up the code a great deal, adds templated route
+support via `route` field, and actually adds a few unit tests (wowzeres,
+that's a good thing, right?). 
 
 Changes:
 
-* Add slug field for templated routes.
+* Add route field for templated routes.
 * Fix use of config field defaults.
 * Add some initial unit tests.
 
