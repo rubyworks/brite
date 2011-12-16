@@ -10,9 +10,7 @@ pre {
 
 /* COLOR */
 
-a {
-  color: #ff3600;
-}
+a { color: #ff3600; }
 
 a:hover {
   text-decoration: underline;
@@ -33,11 +31,30 @@ li p {
 
 /* CLASS STYLES */
 
+.blurb { 
+  float: left; width: 280px; height: 235px; font-size: 1.4em;
+  border: 1px solid #ccc; padding: 10px; margin: 20px 0; 
+       box-shadow: 3px 3px 5px #ccc;
+  -moz-box-shadow: 3px 3px 5px #ccc;
+}
+.left { margin-right: 20px; }
+
 .page { margin: 0 auto; width: 650px; }
 
 .page-wide { margin: 0 auto; width: 740px; text-align: center; }
 
 .content { padding: 0 10px; }
+
+.content ul {
+  font-size: 2em;
+  color: orange;
+}
+
+.content p {
+  font-size: 2em;
+  color: #555;
+  text-align: justify;
+}
 
 .heading { font-size: 2em; }
 
@@ -55,11 +72,12 @@ li p {
 
 #menu {
   width: 100%;
-  padding: 10px 0 20px 0;
+  padding: 2em 0 0 0;
   text-align: center;
 }
 
 #menu .page {
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   padding: 6px;
 }
@@ -67,7 +85,7 @@ li p {
 /* header */
 
 #header {
-  height: 210px;
+  height: 180px;
   position: relative;
   border-top: 0px solid yellow;
   border-bottom: 0px solid yellow;
@@ -75,11 +93,12 @@ li p {
   /* background: #ff3600; */
   background: #ffffff;
   padding: 0;
-  text-shadow: 2px 2px yellow;
+  padding-top: 20px;
+  text-shadow: 2px 2px 5px purple;
 }
 
 #header .title {
-  font-family: courier;
+  font-family: sans-serif;
   padding-top: 10px;
   text-align: left;
 }
@@ -87,20 +106,22 @@ li p {
 /* footer */
 
 #footer {
+  margin-top: 100px;
   padding: 20px 0 40px 0;
   font-size: 0.8em;
   font-weight: bold; 
-  background: #ff3600;
-  color: white;
-  border-top: 1px solid yellow;
+  background: #fff;
+  color: #555;
+  border-top: 0px solid yellow;
 }
 
 
 /* --------- FONT ----------- */
 
 #header .title {
-  font-size: 150px; text-align: left; font-weight: bold;
-  line-height: 200px; letter-spacing: 10px; 
+  font-size: 120px; text-align: left; font-weight: bold;
+  line-height: 180px; letter-spacing: 10px; 
+  color: #eee;
 }
 
 #menu { font-size: 15px; font-weight: bold; font-variant: small-caps; }
