@@ -1,6 +1,6 @@
 ---
 email:
-  mailto  :
+  mailto:
     - ruby-talk@ruby-lang.org
     - rubyworks-mailinglist@googlegroups.com
 
@@ -12,8 +12,8 @@ github:
 
 dnote:
   title: Source Notes
-  labels: ~
   output: log/notes.html
+  labels: ~
 
 locat:
   output: log/locat.html

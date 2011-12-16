@@ -6,11 +6,11 @@ testcase Brite::Page do
     @site ||= Brite::Site.new('test/fixture')
   end
 
-  method :route do
+  method :permalink do
 
-    test "route is calculated correctly" do
+    test "permalink is calculated correctly" do
       page = @site.pages.first
-      page.route.assert == 'example-page.html'
+      page.permalink.assert == '/example-page.html'
     end
 
   end
