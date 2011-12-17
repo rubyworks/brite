@@ -47,11 +47,10 @@ summary: Super Simple Static Site Generation
 title: Brite
 version: 0.7.0
 name: brite
-description: ! 'Brite is a remarkably easy to use, light-weight website generator.
-  It supports
+description: ! 'Brite is an easy to use, light-weight website generator. It supports
 
-  a variety of backend rendering engines including erb, liquid, rdoc, markdown,
+  a variety of backend rendering engines including erb, liquid, rdoc,
 
-  textile and so on.'
+  markdown, textile and so on.'
 organization: RubyWorks
-date: '2011-12-15'
+date: '2011-12-17'
