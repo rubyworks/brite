@@ -1,7 +1,7 @@
-= RELEASE HISTORY
+# RELEASE HISTORY
 
 
-== 0.7.0 / 2011-12-15
+## 0.7.0 / 2011-12-15
 
 New release of Brite cleans up the code a great deal, adds templated route
 support via `route` field, and actually adds a few unit tests (wowzeres,
@@ -14,7 +14,7 @@ Changes:
 * Add some initial unit tests.
 
 
-== 0.6.0 / 2010-11-12
+## 0.6.0 / 2010-11-12
 
 Version 0.6 is a full rewrite of Brite's underlying site generation system.
 Where as before the Site and Page classes handled their own rendering, now
@@ -28,7 +28,7 @@ Changes:
 * Sow templates modified to work with latest release.
 
 
-== 0.5.0 / 2010-10-25
+## 0.5.0 / 2010-10-25
 
 Brite (formerly Webrite) has been completely rewritten from the ground-up,
 applying a number of ideas gathered from other systems and adding further

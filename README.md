@@ -1,23 +1,23 @@
-= Brite
+# Brite
 
 A Shiny Static Website Generator
 
-{Homepage}[http://rubyworks.github.com/brite] /
-{Documentation}[http://rubydoc.info/gems/brite/frames] /
-{Report Issue}[http://github.com/rubyworks/brite/issues] /
-{Development}[http://github.com/rubyworks/brite] /
-{Mailing List}[http://groups.google.com/group/rubyworks-mailinglist]
+[Homepage](http://rubyworks.github.com/brite) /
+[Documentation](http://rubydoc.info/gems/brite/frames) /
+[Report Issue](http://github.com/rubyworks/brite/issues) /
+[Development](http://github.com/rubyworks/brite) /
+[Mailing List](http://groups.google.com/group/rubyworks-mailinglist)
 
-{<img src="http://travis-ci.org/rubyworks/brite.png" />}[http://travis-ci.org/rubyworks/brite]
+[![Brite](http://travis-ci.org/rubyworks/brite.png)](http://travis-ci.org/rubyworks/brite)
 
 
-== DESCRIPTION
+## DESCRIPTION
 
 Brite is an inovative static website/blog generation utility
 which is as easy to use as it is versatile.
 
 
-== FEATURES
+## FEATURES
 
 * Site layout is 100% user-defined.
 * Can generate files in place, so no "special directories" are required.
@@ -26,7 +26,7 @@ which is as easy to use as it is versatile.
 * Supports many markup and templating formats via Malt or Tilt.
 
 
-== SYNOPSIS
+## SYNOPSIS
 
 Very briefly, one creates `.page`, `.post`, .part and `.layout` files and 
 then runs:
@@ -48,22 +48,22 @@ To get further under the hood see Brite source code in the
 and read the {API documentation}[http://rubydoc.info/gems/brite/frames].
 
 
-== HOW TO INSTALL
+## HOW TO INSTALL
 
-=== RubyGems
+### RubyGems
 
   $ gem install brite
 
-=== Setup.rb
+### Setup.rb
 
 If you're old fashion and want to install to a site location,
 see Setup.rb[http://rubyworks.github.com/setup].
 
 
-== COPYRIGHTS
+## COPYRIGHTS
 
 Copyright (c) 2009 Rubyworks
 
 Brite is distributable in accordance to the *BSD-2-Clause* license.
 
-See COPYING.rdoc file for details.
+See LICENSE.md file for details.

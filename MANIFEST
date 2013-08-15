@@ -1,5 +1,5 @@
-#!mast .ruby bin demo lib man qed spec test [A-Z]*.*
-.ruby
+#!mast -x etc .index bin demo lib man spec test *.md *.rdoc *.txt
+.index
 bin/brite
 bin/brite-server
 lib/brite/command.rb
@@ -22,6 +22,6 @@ test/helper.rb
 test/test_config.rb
 test/test_page.rb
 test/test_site.rb
-HISTORY.rdoc
-README.rdoc
-COPYING.rdoc
+LICENSE.md
+README.md
+HISTORY.md
