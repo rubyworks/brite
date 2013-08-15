@@ -1,56 +1,64 @@
 ---
-source:
+revision: 2013
+type: ruby
+sources:
 - var
 authors:
 - name: trans
   email: transfire@gmail.com
+organizations: []
+requirements:
+- version: 0.4.0+
+  name: neapolitan
+- groups:
+  - build
+  development: true
+  name: detroit
+- groups:
+  - build
+  development: true
+  name: reap
+- groups:
+  - test
+  development: true
+  name: lemon
+- groups:
+  - test
+  development: true
+  name: ae
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: http://rubyworks.github.com/brite
+  label: Homepage
+- type: code
+  uri: http://github.com/rubyworks/brite
+  label: Source Code
+- type: bugs
+  uri: http://github.com/rubyworks/brite/issues
+  label: Issue Tracker
+- type: mail
+  uri: http://groups.google.com/groups/rubyworks-mailinglist
+  label: Mailing List
+repositories:
+- name: upstream
+  scm: git
+  uri: git://github.com/rubyworks/brite.git
+categories: []
 copyrights:
 - holder: Rubyworks
   year: '2006'
-replacements: []
-alternatives: []
-requirements:
-- name: neapolitan
-  version: 0.4.0+
-- name: detroit
-  groups:
-  - build
-  development: true
-- name: reap
-  groups:
-  - build
-  development: true
-- name: lemon
-  groups:
-  - test
-  development: true
-- name: ae
-  groups:
-  - test
-  development: true
-dependencies: []
-conflicts: []
-repositories:
-- uri: git://github.com/rubyworks/brite.git
-  scm: git
-  name: upstream
-resources:
-  home: http://rubyworks.github.com/brite
-  code: http://github.com/rubyworks/brite
-  bugs: http://github.com/rubyworks/brite/issues
-  mail: http://groups.google.com/groups/rubyworks-mailinglist
-extra: {}
-load_path:
-- lib
-revision: 0
-summary: Super Simple Static Site Generation
-title: Brite
-version: 0.7.0
+customs: []
+paths:
+  lib:
+  - lib
 name: brite
-description: ! 'Brite is an easy to use, light-weight website generator. It supports
-
+title: Brite
+summary: Super Simple Static Site Generation
+description: |-
+  Brite is an easy to use, light-weight website generator. It supports
   a variety of backend rendering engines including erb, liquid, rdoc,
-
-  markdown, textile and so on.'
-organization: RubyWorks
-date: '2011-12-17'
+  markdown, textile and so on.
+version: 0.7.1
+date: '2013-08-14'
