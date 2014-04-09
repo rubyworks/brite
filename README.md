@@ -21,9 +21,9 @@ which is as easy to use as it is versatile.
 
 * Site layout is 100% user-defined.
 * Can generate files in place, so no "special directories" are required.
-* Alternatively templated routes can customize the site organization. 
+* Or templated routes can customize the site organization. 
 * Supports multi-format templates via Neapolitan template engine.
-* Supports many markup and templating formats via Malt or Tilt.
+* Which supports many markup and templating formats via Malt or Tilt.
 
 
 ## SYNOPSIS
@@ -31,7 +31,7 @@ which is as easy to use as it is versatile.
 Very briefly, one creates `.page`, `.post`, `.part` and `.layout` files and 
 then runs:
 
-  $ brite
+    $ brite
 
 Voila, website made!
 
@@ -40,7 +40,7 @@ Of course, the question really is: how does one go about creating `.page`,
 [Brite website](https://rubyworks.github.com/brite) and see the
 [Getting Started Tutorial](https://github.com/rubyworks/brite/wiki/Getting-Started).
 
-For a quick start, have a look at the {brite-site repository}[https://github.com/rubyworks/brite-site],
+For a quick start, have a look at the [brite-site repository](https://github.com/rubyworks/brite-site),
 which contains a generic Brite project anyone can use to start their own Brite Site.
 
 To get further under the hood, see Brite source code in the

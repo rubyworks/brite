@@ -117,7 +117,7 @@ module Brite
     # @private
     def options_help(parser, options)
       parser.on_tail("--help", "display this help message") do
-        puts options
+        puts parser
         exit
       end
     end
