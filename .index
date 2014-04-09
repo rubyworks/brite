@@ -2,29 +2,29 @@
 revision: 2013
 type: ruby
 sources:
-- var
+- Indexfile
+- Gemfile
 authors:
-- name: trans
+- name: Trans
   email: transfire@gmail.com
-organizations: []
+organizations:
+- name: Rubyworks
 requirements:
-- version: 0.4.0+
+- version: '>= 0.4.0'
   name: neapolitan
+- version: '>= 0'
+  name: facets
 - groups:
   - build
-  development: true
-  name: detroit
-- groups:
-  - build
-  development: true
-  name: reap
+  version: '>= 0'
+  name: rake
 - groups:
   - test
-  development: true
+  version: '>= 0'
   name: lemon
 - groups:
   - test
-  development: true
+  version: '>= 0'
   name: ae
 conflicts: []
 alternatives: []
@@ -49,16 +49,17 @@ categories: []
 copyrights:
 - holder: Rubyworks
   year: '2006'
+  license: BSD-2
 customs: []
 paths:
   lib:
   - lib
 name: brite
 title: Brite
-summary: Super Simple Static Site Generation
-description: |-
-  Brite is an easy to use, light-weight website generator. It supports
-  a variety of backend rendering engines including erb, liquid, rdoc,
-  markdown, textile and so on.
 version: 0.7.1
-date: '2013-08-14'
+slogan: Light Up Your Site
+summary: Brite is an easy to use static site generator.
+description: Brite is an easy to use, light-weight website generator. It supports
+  a variety of backend rendering engines including erb, liquid, rdoc, markdown, textile
+  and so on.
+date: '2014-04-08'

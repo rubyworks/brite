@@ -1,0 +1,34 @@
+---
+name: brite
+
+version: 0.7.1
+
+title: Brite
+
+slogan: Light Up Your Site
+
+summary:
+  Brite is an easy to use static site generator.
+
+description:
+  Brite is an easy to use, light-weight website generator. It supports
+  a variety of backend rendering engines including erb, liquid, rdoc,
+  markdown, textile and so on.
+
+resources:
+  home: http://rubyworks.github.com/brite
+  code: http://github.com/rubyworks/brite
+  bugs: http://github.com/rubyworks/brite/issues
+  mail: http://groups.google.com/groups/rubyworks-mailinglist
+
+repositories:
+  upstream: git://github.com/rubyworks/brite.git
+
+authors:
+  - Trans <transfire@gmail.com>
+
+organization: Rubyworks
+
+copyrights:
+  - 2006 Rubyworks (BSD-2)
+
