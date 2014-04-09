@@ -1,11 +1,9 @@
 # Brite
 
-A Shiny Static Website Generator
-
-[Homepage](http://rubyworks.github.com/brite) /
-[Documentation](http://rubydoc.info/gems/brite/frames) /
-[Report Issue](http://github.com/rubyworks/brite/issues) /
-[Development](http://github.com/rubyworks/brite) /
+[Homepage](http://rubyworks.github.com/brite) |
+[Documentation](http://rubydoc.info/gems/brite/frames) |
+[Report Issue](http://github.com/rubyworks/brite/issues) |
+[Development](http://github.com/rubyworks/brite) |
 [Mailing List](http://groups.google.com/group/rubyworks-mailinglist)
 
 [![Brite](http://travis-ci.org/rubyworks/brite.png)](http://travis-ci.org/rubyworks/brite)
