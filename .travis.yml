@@ -1,10 +1,10 @@
 ---
-script: "bundle exec ruby-test -Ilib -Itest test_*.rb"
+language: ruby
+script: "bundle exec rubytest -Ilib -Itest test_*.rb"
 rvm:
   - 1.8.7
-  - 1.9.2
   - 1.9.3
-  - ree
-  - rbx-2.0
+  - 2.0.0
+  - rbx
   - jruby
 
