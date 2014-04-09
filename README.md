@@ -13,7 +13,7 @@ A Shiny Static Website Generator
 
 ## DESCRIPTION
 
-Brite is an inovative static website/blog generation utility
+Brite is an innovative static website/blog generation utility
 which is as easy to use as it is versatile.
 
 
@@ -28,24 +28,24 @@ which is as easy to use as it is versatile.
 
 ## SYNOPSIS
 
-Very briefly, one creates `.page`, `.post`, .part and `.layout` files and 
+Very briefly, one creates `.page`, `.post`, `.part` and `.layout` files and 
 then runs:
 
   $ brite
 
 Voila, website made!
 
-Of course, the question really is how does one go about creating `.page`,
-`.post`, `.part` and `.layout` files and such. For information about that see the
-{Brite website}[https://rubyworks.github.com/brite] and see the
-{Getting Started Tutorial}[https://github.com/rubyworks/brite/wiki/Getting-Started].
+Of course, the question really is: how does one go about creating `.page`,
+`.post`, `.part`, and `.layout` files and such. For information about that see the
+[Brite website](https://rubyworks.github.com/brite) and see the
+[Getting Started Tutorial](https://github.com/rubyworks/brite/wiki/Getting-Started).
 
-For a quick start, have a look at the {brite-site repository}[https://github.com/rubyworks/brite-site]
+For a quick start, have a look at the {brite-site repository}[https://github.com/rubyworks/brite-site],
 which contains a generic Brite project anyone can use to start their own Brite Site.
 
-To get further under the hood see Brite source code in the
-{GitHub hosted repository}[http://github.com/rubyworks/brite]
-and read the {API documentation}[http://rubydoc.info/gems/brite/frames].
+To get further under the hood, see Brite source code in the
+[GitHub hosted repository](http://github.com/rubyworks/brite)
+and read the [API documentation](http://rubydoc.info/gems/brite/frames).
 
 
 ## HOW TO INSTALL
@@ -56,14 +56,14 @@ and read the {API documentation}[http://rubydoc.info/gems/brite/frames].
 
 ### Setup.rb
 
-If you're old fashion and want to install to a site location,
-see Setup.rb[http://rubyworks.github.com/setup].
+If you are old fashioned and want to install to a site location,
+see [Setup.rb](http://rubyworks.github.com/setup).
 
 
 ## COPYRIGHTS
 
 Copyright (c) 2009 Rubyworks
 
-Brite is distributable in accordance to the *BSD-2-Clause* license.
+Brite is distributable in accordance with the *BSD-2-Clause* license.
 
 See LICENSE.md file for details.
