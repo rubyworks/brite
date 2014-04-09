@@ -10,6 +10,7 @@ end
 
 group :test do
   gem "lemon"
+  gem "rubytest-cli"
   gem "ae"
 end
 

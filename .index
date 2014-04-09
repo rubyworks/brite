@@ -25,6 +25,10 @@ requirements:
 - groups:
   - test
   version: '>= 0'
+  name: rubytest-cli
+- groups:
+  - test
+  version: '>= 0'
   name: ae
 conflicts: []
 alternatives: []
